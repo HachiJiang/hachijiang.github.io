@@ -306,7 +306,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://hachijiang.github.io/2018/05/undefined/深入理解Nginx-Nginx能帮我们做什么/">
+    <link itemprop="mainEntityOfPage" href="https://hachijiang.github.io/2018/05/17/深入理解Nginx-Nginx能帮我们做什么/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="HachiJiang">
@@ -325,7 +325,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/05/undefined/深入理解Nginx-Nginx能帮我们做什么/" itemprop="url">
+                <a class="post-title-link" href="/2018/05/17/深入理解Nginx-Nginx能帮我们做什么/" itemprop="url">
                   深入理解Nginx-Nginx能帮我们做什么？
                 </a>
               
@@ -384,7 +384,7 @@
 
           
           
-             <span id="/2018/05/undefined/深入理解Nginx-Nginx能帮我们做什么/" class="leancloud_visitors" data-flag-title="深入理解Nginx-Nginx能帮我们做什么？">
+             <span id="/2018/05/17/深入理解Nginx-Nginx能帮我们做什么/" class="leancloud_visitors" data-flag-title="深入理解Nginx-Nginx能帮我们做什么？">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -498,7 +498,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://hachijiang.github.io/2018/05/undefined/深入理解Nginx-学习思路及总结/">
+    <link itemprop="mainEntityOfPage" href="https://hachijiang.github.io/2018/05/16/深入理解Nginx-学习思路及总结/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="HachiJiang">
@@ -517,7 +517,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/05/undefined/深入理解Nginx-学习思路及总结/" itemprop="url">
+                <a class="post-title-link" href="/2018/05/16/深入理解Nginx-学习思路及总结/" itemprop="url">
                   深入理解Nginx-学习思路及总结
                 </a>
               
@@ -576,7 +576,7 @@
 
           
           
-             <span id="/2018/05/undefined/深入理解Nginx-学习思路及总结/" class="leancloud_visitors" data-flag-title="深入理解Nginx-学习思路及总结">
+             <span id="/2018/05/16/深入理解Nginx-学习思路及总结/" class="leancloud_visitors" data-flag-title="深入理解Nginx-学习思路及总结">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -1031,9 +1031,25 @@
             });
           } else {
             
-              var $element = $(document.getElementById(url));
-              $element.find('.leancloud-visitors-count').text('Counter not initialized! See more at console err msg.');
-              console.error('ATTENTION! LeanCloud counter has security bug, see here how to solve it: https://github.com/theme-next/hexo-leancloud-counter-security. \n But you also can use LeanCloud without security, by set \'security\' option to \'false\'.');
+              var newcounter = new Counter();
+              /* Set ACL */
+              var acl = new AV.ACL();
+              acl.setPublicReadAccess(true);
+              acl.setPublicWriteAccess(true);
+              newcounter.setACL(acl);
+              /* End Set ACL */
+              newcounter.set("title", title);
+              newcounter.set("url", url);
+              newcounter.set("time", 1);
+              newcounter.save(null, {
+                success: function(newcounter) {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+                },
+                error: function(newcounter, error) {
+                  console.log('Failed to create');
+                }
+              });
             
           }
         },

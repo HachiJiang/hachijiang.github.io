@@ -112,7 +112,7 @@
 <meta name="keywords" content="Nginx">
 <meta property="og:type" content="article">
 <meta property="og:title" content="深入理解Nginx-Nginx能帮我们做什么？">
-<meta property="og:url" content="https://hachijiang.github.io/2018/05/undefined/深入理解Nginx-Nginx能帮我们做什么/index.html">
+<meta property="og:url" content="https://hachijiang.github.io/2018/05/17/深入理解Nginx-Nginx能帮我们做什么/index.html">
 <meta property="og:site_name" content="Hachi&#39;s Blog">
 <meta property="og:description" content="研究Nginx之前的准备工作Nginx是什么？跨平台的Web服务器，竞争对手有Apache、Tomcat、IIS、Jetty。 具备Web服务器的基本功能：  基于REST架构风格； 以URI或者URL作为沟通依据； 通过HTTP为浏览器等客户端提供各种网络服务。  Why Nginx?Nginx的特性：  更快：单次请求能获取更快的响应；并发高峰期更快的响应；可使用当前操作系统特有的高效API来">
 <meta property="og:locale" content="zh-CN">
@@ -126,7 +126,7 @@
 
 
 
-  <link rel="canonical" href="https://hachijiang.github.io/2018/05/undefined/深入理解Nginx-Nginx能帮我们做什么/"/>
+  <link rel="canonical" href="https://hachijiang.github.io/2018/05/17/深入理解Nginx-Nginx能帮我们做什么/"/>
 
 
 
@@ -310,7 +310,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://hachijiang.github.io/2018/05/undefined/深入理解Nginx-Nginx能帮我们做什么/">
+    <link itemprop="mainEntityOfPage" href="https://hachijiang.github.io/2018/05/17/深入理解Nginx-Nginx能帮我们做什么/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="HachiJiang">
@@ -385,8 +385,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/05/undefined/深入理解Nginx-Nginx能帮我们做什么/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count gitment-comments-count" data-xid="/2018/05/undefined/深入理解Nginx-Nginx能帮我们做什么/" itemprop="commentsCount"></span>
+                <a href="/2018/05/17/深入理解Nginx-Nginx能帮我们做什么/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count gitment-comments-count" data-xid="/2018/05/17/深入理解Nginx-Nginx能帮我们做什么/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -394,7 +394,7 @@
 
           
           
-             <span id="/2018/05/undefined/深入理解Nginx-Nginx能帮我们做什么/" class="leancloud_visitors" data-flag-title="深入理解Nginx-Nginx能帮我们做什么？">
+             <span id="/2018/05/17/深入理解Nginx-Nginx能帮我们做什么/" class="leancloud_visitors" data-flag-title="深入理解Nginx-Nginx能帮我们做什么？">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -510,7 +510,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/05/undefined/深入理解Nginx-学习思路及总结/" rel="next" title="深入理解Nginx-学习思路及总结">
+              <a href="/2018/05/16/深入理解Nginx-学习思路及总结/" rel="next" title="深入理解Nginx-学习思路及总结">
                 <i class="fa fa-chevron-left"></i> 深入理解Nginx-学习思路及总结
               </a>
             
@@ -970,9 +970,25 @@
             });
           } else {
             
-              var $element = $(document.getElementById(url));
-              $element.find('.leancloud-visitors-count').text('Counter not initialized! See more at console err msg.');
-              console.error('ATTENTION! LeanCloud counter has security bug, see here how to solve it: https://github.com/theme-next/hexo-leancloud-counter-security. \n But you also can use LeanCloud without security, by set \'security\' option to \'false\'.');
+              var newcounter = new Counter();
+              /* Set ACL */
+              var acl = new AV.ACL();
+              acl.setPublicReadAccess(true);
+              acl.setPublicWriteAccess(true);
+              newcounter.setACL(acl);
+              /* End Set ACL */
+              newcounter.set("title", title);
+              newcounter.set("url", url);
+              newcounter.set("time", 1);
+              newcounter.save(null, {
+                success: function(newcounter) {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+                },
+                error: function(newcounter, error) {
+                  console.log('Failed to create');
+                }
+              });
             
           }
         },
