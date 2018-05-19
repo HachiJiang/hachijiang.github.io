@@ -112,7 +112,7 @@
 <meta name="keywords" content="Nginx">
 <meta property="og:type" content="article">
 <meta property="og:title" content="深入理解Nginx-学习思路及总结">
-<meta property="og:url" content="https://hachijiang.github.io/2018/05/16/深入理解Nginx-学习思路及总结/index.html">
+<meta property="og:url" content="https://hachijiang.github.io/2018/05/undefined/深入理解Nginx-学习思路及总结/index.html">
 <meta property="og:site_name" content="Hachi&#39;s Blog">
 <meta property="og:description" content="学习目的 Nginx是什么？解决了哪些问题？ Nginx是如何解决这些问题的？ Nginx的架构设计？ Best Practice： 如何用Nginx构建高性能服务器？ 如何充分利用服务器硬件资源？ 如何快速定位、修复Nginx上的问题 如何利用Nginx设计任何基于TCP的、无阻塞的。易于扩展的服务器？   从Nginx出发，补齐需要的基础知识 与Node的区别？  总结收获">
 <meta property="og:locale" content="zh-CN">
@@ -126,7 +126,7 @@
 
 
 
-  <link rel="canonical" href="https://hachijiang.github.io/2018/05/16/深入理解Nginx-学习思路及总结/"/>
+  <link rel="canonical" href="https://hachijiang.github.io/2018/05/undefined/深入理解Nginx-学习思路及总结/"/>
 
 
 
@@ -310,7 +310,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://hachijiang.github.io/2018/05/16/深入理解Nginx-学习思路及总结/">
+    <link itemprop="mainEntityOfPage" href="https://hachijiang.github.io/2018/05/undefined/深入理解Nginx-学习思路及总结/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="HachiJiang">
@@ -385,25 +385,14 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/05/16/深入理解Nginx-学习思路及总结/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count gitment-comments-count" data-xid="/2018/05/16/深入理解Nginx-学习思路及总结/" itemprop="commentsCount"></span>
+                <a href="/2018/05/undefined/深入理解Nginx-学习思路及总结/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count gitment-comments-count" data-xid="/2018/05/undefined/深入理解Nginx-学习思路及总结/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
           
 
           
-          
-             <span id="/2018/05/16/深入理解Nginx-学习思路及总结/" class="leancloud_visitors" data-flag-title="深入理解Nginx-学习思路及总结">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数：</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
           
 
           
@@ -502,7 +491,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/05/17/深入理解Nginx-Nginx能帮我们做什么/" rel="prev" title="深入理解Nginx-Nginx能帮我们做什么？">
+              <a href="/2018/05/undefined/深入理解Nginx-Nginx能帮我们做什么/" rel="prev" title="深入理解Nginx-Nginx能帮我们做什么？">
                 深入理解Nginx-Nginx能帮我们做什么？ <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -883,102 +872,6 @@
 
 
   
-
-  
-  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
-  <script>AV.initialize("RCvIuzcBS75CqEpVN3m05BcD-gzGzoHsz", "dFkYsEx3WSnBdiAVPxsPkRDs");</script>
-  <script>
-    function showTime(Counter) {
-      var query = new AV.Query(Counter);
-      var entries = [];
-      var $visitors = $(".leancloud_visitors");
-
-      $visitors.each(function () {
-        entries.push( $(this).attr("id").trim() );
-      });
-
-      query.containedIn('url', entries);
-      query.find()
-        .done(function (results) {
-          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
-
-          if (results.length === 0) {
-            $visitors.find(COUNT_CONTAINER_REF).text(0);
-            return;
-          }
-
-          for (var i = 0; i < results.length; i++) {
-            var item = results[i];
-            var url = item.get('url');
-            var time = item.get('time');
-            var element = document.getElementById(url);
-
-            $(element).find(COUNT_CONTAINER_REF).text(time);
-          }
-          for(var i = 0; i < entries.length; i++) {
-            var url = entries[i];
-            var element = document.getElementById(url);
-            var countSpan = $(element).find(COUNT_CONTAINER_REF);
-            if( countSpan.text() == '') {
-              countSpan.text(0);
-            }
-          }
-        })
-        .fail(function (object, error) {
-          console.log("Error: " + error.code + " " + error.message);
-        });
-    }
-
-    function addCount(Counter) {
-      var $visitors = $(".leancloud_visitors");
-      var url = $visitors.attr('id').trim();
-      var title = $visitors.attr('data-flag-title').trim();
-      var query = new AV.Query(Counter);
-
-      query.equalTo("url", url);
-      query.find({
-        success: function(results) {
-          if (results.length > 0) {
-            var counter = results[0];
-            counter.fetchWhenSave(true);
-            counter.increment("time");
-            
-            counter.save(null, {
-              success: function(counter) {
-                
-                  var $element = $(document.getElementById(url));
-                  $element.find('.leancloud-visitors-count').text(counter.get('time'));
-                
-              },
-              error: function(counter, error) {
-                console.log('Failed to save Visitor num, with error message: ' + error.message);
-              }
-            });
-          } else {
-            
-              var $element = $(document.getElementById(url));
-              $element.find('.leancloud-visitors-count').text('Counter not initialized! See more at console err msg.');
-              console.error('ATTENTION! LeanCloud counter has security bug, see here how to solve it: https://github.com/theme-next/hexo-leancloud-counter-security. \n But you also can use LeanCloud without security, by set \'security\' option to \'false\'.');
-            
-          }
-        },
-        error: function(error) {
-          console.log('Error:' + error.code + " " + error.message);
-        }
-      });
-    }
-
-    $(function() {
-      var Counter = AV.Object.extend("Counter");
-      if ($('.leancloud_visitors').length == 1) {
-        addCount(Counter);
-      } else if ($('.post-title-link').length > 1) {
-        showTime(Counter);
-      }
-    });
-  </script>
-
-
 
   
 
