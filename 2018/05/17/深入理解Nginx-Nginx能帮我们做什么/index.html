@@ -108,21 +108,25 @@
 
 
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="categories">
-<meta property="og:url" content="https://hachijiang.github.io/categories/index.html">
+  <meta name="description" content="研究Nginx之前的准备工作Nginx是什么？跨平台的Web服务器，竞争对手有Apache、Tomcat、IIS、Jetty。 具备Web服务器的基本功能：  基于REST架构风格； 以URI或者URL作为沟通依据； 通过HTTP为浏览器等客户端提供各种网络服务。  Why Nginx?Nginx的特性：  更快：单次请求能获取更快的响应；并发高峰期更快的响应；可使用当前操作系统特有的高效API来">
+<meta name="keywords" content="Nginx">
+<meta property="og:type" content="article">
+<meta property="og:title" content="深入理解Nginx-Nginx能帮我们做什么？">
+<meta property="og:url" content="https://hachijiang.github.io/2018/05/17/深入理解Nginx-Nginx能帮我们做什么/index.html">
 <meta property="og:site_name" content="Hachi&#39;s Blog">
+<meta property="og:description" content="研究Nginx之前的准备工作Nginx是什么？跨平台的Web服务器，竞争对手有Apache、Tomcat、IIS、Jetty。 具备Web服务器的基本功能：  基于REST架构风格； 以URI或者URL作为沟通依据； 通过HTTP为浏览器等客户端提供各种网络服务。  Why Nginx?Nginx的特性：  更快：单次请求能获取更快的响应；并发高峰期更快的响应；可使用当前操作系统特有的高效API来">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-05-19T05:46:44.000Z">
+<meta property="og:updated_time" content="2018-05-17T15:27:40.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="categories">
+<meta name="twitter:title" content="深入理解Nginx-Nginx能帮我们做什么？">
+<meta name="twitter:description" content="研究Nginx之前的准备工作Nginx是什么？跨平台的Web服务器，竞争对手有Apache、Tomcat、IIS、Jetty。 具备Web服务器的基本功能：  基于REST架构风格； 以URI或者URL作为沟通依据； 通过HTTP为浏览器等客户端提供各种网络服务。  Why Nginx?Nginx的特性：  更快：单次请求能获取更快的响应；并发高峰期更快的响应；可使用当前操作系统特有的高效API来">
 
 
 
 
 
 
-  <link rel="canonical" href="https://hachijiang.github.io/categories/"/>
+  <link rel="canonical" href="https://hachijiang.github.io/2018/05/17/深入理解Nginx-Nginx能帮我们做什么/"/>
 
 
 
@@ -132,7 +136,7 @@
   };
 </script>
 
-  <title>categories | Hachi's Blog</title>
+  <title>深入理解Nginx-Nginx能帮我们做什么？ | Hachi's Blog</title>
   
 
 
@@ -237,7 +241,7 @@
         
         
           
-          <li class="menu-item menu-item-categories menu-item-active">
+          <li class="menu-item menu-item-categories">
     <a href="/categories/" rel="section">
       <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类</a>
   </li>
@@ -321,90 +325,263 @@
           
             
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
           
           <div id="content" class="content">
             
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://hachijiang.github.io/2018/05/17/深入理解Nginx-Nginx能帮我们做什么/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="HachiJiang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hachi's Blog">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-<h2 class="post-title" itemprop="name headline">categories</h2>
-
-<div class="post-meta">
-  
-  
-
-
-
-</div>
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
-          <div class="category-all-page">
-            <div class="category-all-title">
-                
-                
-                  
-                    
-                  
-                
-                  
-                    
-                  
-                
-                目前共计 2 个分类
-            </div>
-            <div class="category-all">
-              <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Web开发/">Web开发</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/开发工具/">开发工具</a><span class="category-list-count">1</span></li></ul>
-            </div>
-          </div>
+          <h2 class="post-title" itemprop="name headline">深入理解Nginx-Nginx能帮我们做什么？
+              
+            
+          </h2>
         
-      </div>
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2018-05-17 23:27:40" itemprop="dateCreated datePublished" datetime="2018-05-17T23:27:40+08:00">2018-05-17</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Web开发/" itemprop="url" rel="index"><span itemprop="name">Web开发</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/05/17/深入理解Nginx-Nginx能帮我们做什么/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count gitment-comments-count" data-xid="/2018/05/17/深入理解Nginx-Nginx能帮我们做什么/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
       
+
+      
+        <h3 id="研究Nginx之前的准备工作"><a href="#研究Nginx之前的准备工作" class="headerlink" title="研究Nginx之前的准备工作"></a>研究Nginx之前的准备工作</h3><h4 id="Nginx是什么？"><a href="#Nginx是什么？" class="headerlink" title="Nginx是什么？"></a>Nginx是什么？</h4><p>跨平台的Web服务器，竞争对手有<code>Apache</code>、<code>Tomcat</code>、<code>IIS</code>、<code>Jetty</code>。</p>
+<p>具备Web服务器的基本功能：</p>
+<ul>
+<li>基于<code>REST</code>架构风格；</li>
+<li>以<code>URI</code>或者<code>URL</code>作为沟通依据；</li>
+<li>通过HTTP为浏览器等客户端提供各种网络服务。</li>
+</ul>
+<h4 id="Why-Nginx"><a href="#Why-Nginx" class="headerlink" title="Why Nginx?"></a>Why Nginx?</h4><p>Nginx的特性：</p>
+<ul>
+<li>更快：单次请求能获取更快的响应；并发高峰期更快的响应；可使用当前操作系统特有的高效API来提升性能</li>
+<li>高扩展性：低耦合的优秀设计，丰富的第三方扩展模块。</li>
+<li>高可靠性：核心框架代码的优秀设计，模块设计的简单性，代码质量的稳定性。</li>
+<li>低内存消耗：内存优化。</li>
+<li>单机支持10万以上的并发连接。</li>
+<li>热部署：支持不停机的情况下更新配置等。</li>
+<li>最自由的BSD许可协议。</li>
+</ul>
+<p>Nginx擅长处理高并发，得益于其：</p>
+<ul>
+<li>事件驱动型设计</li>
+<li>全异步的网络I/O处理机制</li>
+<li>极少的进程间切换</li>
+<li>其他许多优化设计</li>
+</ul>
+<h4 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h4><h3 id="Nginx的配置"><a href="#Nginx的配置" class="headerlink" title="Nginx的配置"></a>Nginx的配置</h3><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><h4 id="积累概念"><a href="#积累概念" class="headerlink" title="积累概念"></a>积累概念</h4><ul>
+<li><code>URI</code>：<code>Uniform Resource Identifier</code>，统一资源描述符。</li>
+<li><code>URL</code>：<code>Uniform Resource Locator</code>，统一资源定位符。</li>
+</ul>
+
       
     </div>
+
     
+
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div></div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechatpay.jpg" alt="HachiJiang 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Nginx/" rel="tag"># Nginx</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/16/深入理解Nginx-学习思路及总结/" rel="next" title="深入理解Nginx-学习思路及总结">
+                <i class="fa fa-chevron-left"></i> 深入理解Nginx-学习思路及总结
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/05/19/如何设置zsh为MacOS默认Shell/" rel="prev" title="如何设置zsh为MacOS默认Shell">
+                如何设置zsh为MacOS默认Shell <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
 
 
 
-    
-    
-    
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
           </div>
           
+
+  
+    <div class="comments" id="comments">
+      
+        <div id="gitment-container"></div>
+      
+    </div>
+
+  
+
+
 
         </div>
         
@@ -425,8 +602,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -510,6 +696,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#研究Nginx之前的准备工作"><span class="nav-number">1.</span> <span class="nav-text">研究Nginx之前的准备工作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Nginx是什么？"><span class="nav-number">1.1.</span> <span class="nav-text">Nginx是什么？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Why-Nginx"><span class="nav-number">1.2.</span> <span class="nav-text">Why Nginx?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#准备工作"><span class="nav-number">1.3.</span> <span class="nav-text">准备工作</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Nginx的配置"><span class="nav-number">2.</span> <span class="nav-text">Nginx的配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#积累概念"><span class="nav-number">3.1.</span> <span class="nav-text">积累概念</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -691,6 +893,30 @@
 
     
 
+    
+      <script type="text/javascript">
+      function renderGitment(){
+        var gitment = new Gitmint({
+            id: window.location.pathname,
+            owner: 'HachiJiang',
+            repo: 'HachiJiang.github.io',
+            
+            lang: "" || navigator.language || navigator.systemLanguage || navigator.userLanguage,
+            
+            oauth: {
+            
+            
+                client_secret: 'ed6ab3d696e7bb88a1ad3d8347702756e3ad0a4f',
+            
+                client_id: 'e0f1698664bee9761efe'
+            }});
+        gitment.render('gitment-container');
+      }
+
+      
+      renderGitment();
+      
+      </script>
     
 
 
