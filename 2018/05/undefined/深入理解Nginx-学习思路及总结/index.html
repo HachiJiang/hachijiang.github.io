@@ -14,7 +14,7 @@
   
 
 
-<html class="theme-next pisces use-motion" lang="zh-Hans">
+<html class="theme-next pisces use-motion" lang="zh-CN">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -86,7 +86,7 @@
     root: '/',
     scheme: 'Pisces',
     version: '6.3.0',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":false,"onmobile":false},
     fancybox: false,
     fastclick: false,
     lazyload: false,
@@ -108,25 +108,25 @@
 
 
 
-  <meta name="description" content="研究Nginx之前的准备工作Nginx是什么？跨平台的Web服务器，竞争对手有Apache、Tomcat、IIS、Jetty。 具备Web服务器的基本功能：  基于REST架构风格； 以URI或者URL作为沟通依据； 通过HTTP为浏览器等客户端提供各种网络服务。  Why Nginx?Nginx的特性：  更快：单次请求能获取更快的响应；并发高峰期更快的响应；可使用当前操作系统特有的高效API来">
+  <meta name="description" content="学习目的 Nginx是什么？解决了哪些问题？ Nginx是如何解决这些问题的？ Nginx的架构设计？ Best Practice： 如何用Nginx构建高性能服务器？ 如何充分利用服务器硬件资源？ 如何快速定位、修复Nginx上的问题 如何利用Nginx设计任何基于TCP的、无阻塞的。易于扩展的服务器？   从Nginx出发，补齐需要的基础知识 与Node的区别？  总结收获">
 <meta name="keywords" content="Nginx">
 <meta property="og:type" content="article">
-<meta property="og:title" content="深入理解Nginx-Nginx能帮我们做什么？">
-<meta property="og:url" content="https://hachijiang.github.io/2018/05/17/深入理解Nginx-Nginx能帮我们做什么/index.html">
-<meta property="og:site_name" content="Hello Hachi">
-<meta property="og:description" content="研究Nginx之前的准备工作Nginx是什么？跨平台的Web服务器，竞争对手有Apache、Tomcat、IIS、Jetty。 具备Web服务器的基本功能：  基于REST架构风格； 以URI或者URL作为沟通依据； 通过HTTP为浏览器等客户端提供各种网络服务。  Why Nginx?Nginx的特性：  更快：单次请求能获取更快的响应；并发高峰期更快的响应；可使用当前操作系统特有的高效API来">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-17T15:27:40.000Z">
+<meta property="og:title" content="深入理解Nginx-学习思路及总结">
+<meta property="og:url" content="https://hachijiang.github.io/2018/05/undefined/深入理解Nginx-学习思路及总结/index.html">
+<meta property="og:site_name" content="Hachi&#39;s Blog">
+<meta property="og:description" content="学习目的 Nginx是什么？解决了哪些问题？ Nginx是如何解决这些问题的？ Nginx的架构设计？ Best Practice： 如何用Nginx构建高性能服务器？ 如何充分利用服务器硬件资源？ 如何快速定位、修复Nginx上的问题 如何利用Nginx设计任何基于TCP的、无阻塞的。易于扩展的服务器？   从Nginx出发，补齐需要的基础知识 与Node的区别？  总结收获">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-05-16T15:30:10.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="深入理解Nginx-Nginx能帮我们做什么？">
-<meta name="twitter:description" content="研究Nginx之前的准备工作Nginx是什么？跨平台的Web服务器，竞争对手有Apache、Tomcat、IIS、Jetty。 具备Web服务器的基本功能：  基于REST架构风格； 以URI或者URL作为沟通依据； 通过HTTP为浏览器等客户端提供各种网络服务。  Why Nginx?Nginx的特性：  更快：单次请求能获取更快的响应；并发高峰期更快的响应；可使用当前操作系统特有的高效API来">
+<meta name="twitter:title" content="深入理解Nginx-学习思路及总结">
+<meta name="twitter:description" content="学习目的 Nginx是什么？解决了哪些问题？ Nginx是如何解决这些问题的？ Nginx的架构设计？ Best Practice： 如何用Nginx构建高性能服务器？ 如何充分利用服务器硬件资源？ 如何快速定位、修复Nginx上的问题 如何利用Nginx设计任何基于TCP的、无阻塞的。易于扩展的服务器？   从Nginx出发，补齐需要的基础知识 与Node的区别？  总结收获">
 
 
 
 
 
 
-  <link rel="canonical" href="https://hachijiang.github.io/2018/05/17/深入理解Nginx-Nginx能帮我们做什么/"/>
+  <link rel="canonical" href="https://hachijiang.github.io/2018/05/undefined/深入理解Nginx-学习思路及总结/"/>
 
 
 
@@ -136,7 +136,7 @@
   };
 </script>
 
-  <title>深入理解Nginx-Nginx能帮我们做什么？ | Hello Hachi</title>
+  <title>深入理解Nginx-学习思路及总结 | Hachi's Blog</title>
   
 
 
@@ -185,7 +185,7 @@
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
   
   
@@ -203,15 +203,19 @@
     <div class="custom-logo-site-title">
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Hello Hachi</span>
+        <span class="site-title">Hachi's Blog</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
     
+      
+        <p class="site-subtitle">A Hard Rain Gonna Fall.</p>
+      
+    
   </div>
 
   <div class="site-nav-toggle">
-    <button aria-label="Toggle navigation bar">
+    <button aria-label="切换导航栏">
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
@@ -231,7 +235,23 @@
           
           <li class="menu-item menu-item-home">
     <a href="/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
   </li>
         
         
@@ -239,7 +259,7 @@
           
           <li class="menu-item menu-item-archives">
     <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
   </li>
 
       
@@ -290,7 +310,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://hachijiang.github.io/2018/05/17/深入理解Nginx-Nginx能帮我们做什么/">
+    <link itemprop="mainEntityOfPage" href="https://hachijiang.github.io/2018/05/undefined/深入理解Nginx-学习思路及总结/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="HachiJiang">
@@ -299,7 +319,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hello Hachi">
+      <meta itemprop="name" content="Hachi's Blog">
     </span>
 
     
@@ -307,7 +327,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">深入理解Nginx-Nginx能帮我们做什么？
+          <h1 class="post-title" itemprop="name headline">深入理解Nginx-学习思路及总结
               
             
           </h1>
@@ -325,14 +345,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">发表于</span>
               
 
               
                 
               
 
-              <time title="Created: 2018-05-17 23:27:40" itemprop="dateCreated datePublished" datetime="2018-05-17T23:27:40+08:00">2018-05-17</time>
+              <time title="创建时间：2018-05-16 23:30:10" itemprop="dateCreated datePublished" datetime="2018-05-16T23:30:10+08:00">2018-05-16</time>
             
 
             
@@ -347,7 +367,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Web开发/" itemprop="url" rel="index"><span itemprop="name">Web开发</span></a></span>
@@ -365,8 +385,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/05/17/深入理解Nginx-Nginx能帮我们做什么/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">Comments: </span> <span class="post-comments-count gitment-comments-count" data-xid="/2018/05/17/深入理解Nginx-Nginx能帮我们做什么/" itemprop="commentsCount"></span>
+                <a href="/2018/05/undefined/深入理解Nginx-学习思路及总结/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count gitment-comments-count" data-xid="/2018/05/undefined/深入理解Nginx-学习思路及总结/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -394,35 +414,21 @@
       
 
       
-        <h3 id="研究Nginx之前的准备工作"><a href="#研究Nginx之前的准备工作" class="headerlink" title="研究Nginx之前的准备工作"></a>研究Nginx之前的准备工作</h3><h4 id="Nginx是什么？"><a href="#Nginx是什么？" class="headerlink" title="Nginx是什么？"></a>Nginx是什么？</h4><p>跨平台的Web服务器，竞争对手有<code>Apache</code>、<code>Tomcat</code>、<code>IIS</code>、<code>Jetty</code>。</p>
-<p>具备Web服务器的基本功能：</p>
-<ul>
-<li>基于<code>REST</code>架构风格；</li>
-<li>以<code>URI</code>或者<code>URL</code>作为沟通依据；</li>
-<li>通过HTTP为浏览器等客户端提供各种网络服务。</li>
+        <h3 id="学习目的"><a href="#学习目的" class="headerlink" title="学习目的"></a>学习目的</h3><ul>
+<li>Nginx是什么？解决了哪些问题？</li>
+<li>Nginx是如何解决这些问题的？</li>
+<li>Nginx的架构设计？</li>
+<li>Best Practice：<ul>
+<li>如何用Nginx构建高性能服务器？</li>
+<li>如何充分利用服务器硬件资源？</li>
+<li>如何快速定位、修复Nginx上的问题</li>
+<li>如何利用Nginx设计任何基于TCP的、无阻塞的。易于扩展的服务器？</li>
 </ul>
-<h4 id="Why-Nginx"><a href="#Why-Nginx" class="headerlink" title="Why Nginx?"></a>Why Nginx?</h4><p>Nginx的特性：</p>
-<ul>
-<li>更快：单次请求能获取更快的响应；并发高峰期更快的响应；可使用当前操作系统特有的高效API来提升性能</li>
-<li>高扩展性：低耦合的优秀设计，丰富的第三方扩展模块。</li>
-<li>高可靠性：核心框架代码的优秀设计，模块设计的简单性，代码质量的稳定性。</li>
-<li>低内存消耗：内存优化。</li>
-<li>单机支持10万以上的并发连接。</li>
-<li>热部署：支持不停机的情况下更新配置等。</li>
-<li>最自由的BSD许可协议。</li>
+</li>
+<li>从Nginx出发，补齐需要的基础知识</li>
+<li>与Node的区别？</li>
 </ul>
-<p>Nginx擅长处理高并发，得益于其：</p>
-<ul>
-<li>事件驱动型设计</li>
-<li>全异步的网络I/O处理机制</li>
-<li>极少的进程间切换</li>
-<li>其他许多优化设计</li>
-</ul>
-<h4 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h4><h3 id="Nginx的配置"><a href="#Nginx的配置" class="headerlink" title="Nginx的配置"></a>Nginx的配置</h3><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><h4 id="积累概念"><a href="#积累概念" class="headerlink" title="积累概念"></a>积累概念</h4><ul>
-<li><code>URI</code>：<code>Uniform Resource Identifier</code>，统一资源描述符。</li>
-<li><code>URL</code>：<code>Uniform Resource Locator</code>，统一资源定位符。</li>
-</ul>
-
+<h3 id="总结收获"><a href="#总结收获" class="headerlink" title="总结收获"></a>总结收获</h3>
       
     </div>
 
@@ -455,15 +461,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/05/16/深入理解Nginx-学习思路及总结/" rel="next" title="深入理解Nginx-学习思路及总结">
-                <i class="fa fa-chevron-left"></i> 深入理解Nginx-学习思路及总结
-              </a>
-            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/05/undefined/深入理解Nginx-Nginx能帮我们做什么/" rel="prev" title="深入理解Nginx-Nginx能帮我们做什么？">
+                深入理解Nginx-Nginx能帮我们做什么？ <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -521,10 +527,10 @@
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
+            文章目录
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
+            站点概览
           </li>
         </ul>
       
@@ -545,7 +551,7 @@
                   <a href="/archives/">
                 
                     <span class="site-state-item-count">2</span>
-                    <span class="site-state-item-name">posts</span>
+                    <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
               
@@ -554,14 +560,14 @@
                 
                 
                 <div class="site-state-item site-state-categories">
-                  
+                  <a href="/categories/index.html">
                     
                     
                       
                     
                     <span class="site-state-item-count">1</span>
-                    <span class="site-state-item-name">categories</span>
-                  
+                    <span class="site-state-item-name">分类</span>
+                  </a>
                 </div>
               
 
@@ -569,14 +575,14 @@
                 
                 
                 <div class="site-state-item site-state-tags">
-                  
+                  <a href="/tags/index.html">
                     
                     
                       
                     
                     <span class="site-state-item-count">1</span>
-                    <span class="site-state-item-name">tags</span>
-                  
+                    <span class="site-state-item-name">标签</span>
+                  </a>
                 </div>
               
             </nav>
@@ -584,6 +590,15 @@
 
           
 
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/HachiJiang" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+            </div>
           
 
           
@@ -610,7 +625,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#研究Nginx之前的准备工作"><span class="nav-number">1.</span> <span class="nav-text">研究Nginx之前的准备工作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Nginx是什么？"><span class="nav-number">1.1.</span> <span class="nav-text">Nginx是什么？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Why-Nginx"><span class="nav-number">1.2.</span> <span class="nav-text">Why Nginx?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#准备工作"><span class="nav-number">1.3.</span> <span class="nav-text">准备工作</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Nginx的配置"><span class="nav-number">2.</span> <span class="nav-text">Nginx的配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#积累概念"><span class="nav-number">3.1.</span> <span class="nav-text">积累概念</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#学习目的"><span class="nav-number">1.</span> <span class="nav-text">学习目的</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结收获"><span class="nav-number">2.</span> <span class="nav-text">总结收获</span></a></li></ol></div>
             
 
           </div>
@@ -618,6 +633,11 @@
       <!--/noindex-->
       
 
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+        </div>
       
 
     </div>
@@ -644,7 +664,7 @@
 
 
 
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动 v3.7.1</div>
 
 
 
@@ -652,7 +672,7 @@
 
 
 
-  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Pisces</a> v6.3.0</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Pisces</a> v6.3.0</div>
 
 
 
@@ -670,11 +690,6 @@
       </div>
     </footer>
 
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
     
 
     
@@ -823,6 +838,30 @@
 
 
 
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+  
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(function (item) {
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'RCvIuzcBS75CqEpVN3m05BcD-gzGzoHsz',
+        appKey: 'dFkYsEx3WSnBdiAVPxsPkRDs',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
 
 
 

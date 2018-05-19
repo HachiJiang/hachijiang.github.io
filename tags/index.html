@@ -14,7 +14,7 @@
   
 
 
-<html class="theme-next pisces use-motion" lang="zh-Hans">
+<html class="theme-next pisces use-motion" lang="zh-CN">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -86,7 +86,7 @@
     root: '/',
     scheme: 'Pisces',
     version: '6.3.0',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":false,"onmobile":false},
     fancybox: false,
     fastclick: false,
     lazyload: false,
@@ -108,25 +108,21 @@
 
 
 
-  <meta name="description" content="学习目的 Nginx是什么？解决了哪些问题？ Nginx是如何解决这些问题的？ Nginx的架构设计？ Best Practice： 如何用Nginx构建高性能服务器？ 如何充分利用服务器硬件资源？ 如何快速定位、修复Nginx上的问题 如何利用Nginx设计任何基于TCP的、无阻塞的。易于扩展的服务器？   从Nginx出发，补齐需要的基础知识 与Node的区别？  总结收获">
-<meta name="keywords" content="Nginx">
-<meta property="og:type" content="article">
-<meta property="og:title" content="深入理解Nginx-学习思路及总结">
-<meta property="og:url" content="https://hachijiang.github.io/2018/05/16/深入理解Nginx-学习思路及总结/index.html">
-<meta property="og:site_name" content="Hello Hachi">
-<meta property="og:description" content="学习目的 Nginx是什么？解决了哪些问题？ Nginx是如何解决这些问题的？ Nginx的架构设计？ Best Practice： 如何用Nginx构建高性能服务器？ 如何充分利用服务器硬件资源？ 如何快速定位、修复Nginx上的问题 如何利用Nginx设计任何基于TCP的、无阻塞的。易于扩展的服务器？   从Nginx出发，补齐需要的基础知识 与Node的区别？  总结收获">
-<meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-16T15:30:10.000Z">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="tags">
+<meta property="og:url" content="https://hachijiang.github.io/tags/index.html">
+<meta property="og:site_name" content="Hachi&#39;s Blog">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-05-19T04:57:34.157Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="深入理解Nginx-学习思路及总结">
-<meta name="twitter:description" content="学习目的 Nginx是什么？解决了哪些问题？ Nginx是如何解决这些问题的？ Nginx的架构设计？ Best Practice： 如何用Nginx构建高性能服务器？ 如何充分利用服务器硬件资源？ 如何快速定位、修复Nginx上的问题 如何利用Nginx设计任何基于TCP的、无阻塞的。易于扩展的服务器？   从Nginx出发，补齐需要的基础知识 与Node的区别？  总结收获">
+<meta name="twitter:title" content="tags">
 
 
 
 
 
 
-  <link rel="canonical" href="https://hachijiang.github.io/2018/05/16/深入理解Nginx-学习思路及总结/"/>
+  <link rel="canonical" href="https://hachijiang.github.io/tags/"/>
 
 
 
@@ -136,7 +132,7 @@
   };
 </script>
 
-  <title>深入理解Nginx-学习思路及总结 | Hello Hachi</title>
+  <title>tags | Hachi's Blog</title>
   
 
 
@@ -185,7 +181,7 @@
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
   
   
@@ -203,15 +199,19 @@
     <div class="custom-logo-site-title">
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Hello Hachi</span>
+        <span class="site-title">Hachi's Blog</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
     
+      
+        <p class="site-subtitle">A Hard Rain Gonna Fall.</p>
+      
+    
   </div>
 
   <div class="site-nav-toggle">
-    <button aria-label="Toggle navigation bar">
+    <button aria-label="切换导航栏">
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
@@ -231,7 +231,23 @@
           
           <li class="menu-item menu-item-home">
     <a href="/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />分类</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags menu-item-active">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
   </li>
         
         
@@ -239,7 +255,7 @@
           
           <li class="menu-item menu-item-archives">
     <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
   </li>
 
       
@@ -270,205 +286,81 @@
           
             
 
+    
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+    
+
+  
+
+
           
           <div id="content" class="content">
             
 
   <div id="posts" class="posts-expand">
     
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://hachijiang.github.io/2018/05/16/深入理解Nginx-学习思路及总结/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="HachiJiang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hello Hachi">
-    </span>
-
     
+    
+    <div class="post-block page">
       <header class="post-header">
 
-        
-        
-          <h1 class="post-title" itemprop="name headline">深入理解Nginx-学习思路及总结
-              
-            
-          </h1>
-        
+<h1 class="post-title" itemprop="name headline">tags</h1>
 
-        <div class="post-meta">
-          <span class="post-time">
+<div class="post-meta">
+  
+  
 
-            
-            
-            
 
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
 
-              
-                
-              
+</div>
 
-              <time title="Created: 2018-05-16 23:30:10" itemprop="dateCreated datePublished" datetime="2018-05-16T23:30:10+08:00">2018-05-16</time>
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Web开发/" itemprop="url" rel="index"><span itemprop="name">Web开发</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/05/16/深入理解Nginx-学习思路及总结/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">Comments: </span> <span class="post-comments-count gitment-comments-count" data-xid="/2018/05/16/深入理解Nginx-学习思路及总结/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
+</header>
 
       
       
-
       
-        <h3 id="学习目的"><a href="#学习目的" class="headerlink" title="学习目的"></a>学习目的</h3><ul>
-<li>Nginx是什么？解决了哪些问题？</li>
-<li>Nginx是如何解决这些问题的？</li>
-<li>Nginx的架构设计？</li>
-<li>Best Practice：<ul>
-<li>如何用Nginx构建高性能服务器？</li>
-<li>如何充分利用服务器硬件资源？</li>
-<li>如何快速定位、修复Nginx上的问题</li>
-<li>如何利用Nginx设计任何基于TCP的、无阻塞的。易于扩展的服务器？</li>
-</ul>
-</li>
-<li>从Nginx出发，补齐需要的基础知识</li>
-<li>与Node的区别？</li>
-</ul>
-<h3 id="总结收获"><a href="#总结收获" class="headerlink" title="总结收获"></a>总结收获</h3>
+      <div class="post-body">
+        
+        
+          <div class="tag-cloud">
+            <div class="tag-cloud-title">
+                
+                
+                  
+                    
+                  
+                
+                目前共计 1 个标签
+            </div>
+            <div class="tag-cloud-tags">
+              <a href="/tags/Nginx/" style="font-size: 12px; color: #ccc">Nginx</a>
+            </div>
+          </div>
+        
+      </div>
+      
+      
       
     </div>
-
     
 
+
+
     
     
     
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/Nginx/" rel="tag"># Nginx</a>
-          
-        </div>
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/05/17/深入理解Nginx-Nginx能帮我们做什么/" rel="prev" title="深入理解Nginx-Nginx能帮我们做什么？">
-                深入理解Nginx-Nginx能帮我们做什么？ <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-
-    <div class="post-spread">
-      
-    </div>
   </div>
 
 
@@ -505,17 +397,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -531,7 +414,7 @@
                   <a href="/archives/">
                 
                     <span class="site-state-item-count">2</span>
-                    <span class="site-state-item-name">posts</span>
+                    <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
               
@@ -540,14 +423,14 @@
                 
                 
                 <div class="site-state-item site-state-categories">
-                  
+                  <a href="/categories/index.html">
                     
                     
                       
                     
                     <span class="site-state-item-count">1</span>
-                    <span class="site-state-item-name">categories</span>
-                  
+                    <span class="site-state-item-name">分类</span>
+                  </a>
                 </div>
               
 
@@ -555,14 +438,14 @@
                 
                 
                 <div class="site-state-item site-state-tags">
-                  
+                  <a href="/tags/index.html">
                     
                     
                       
                     
                     <span class="site-state-item-count">1</span>
-                    <span class="site-state-item-name">tags</span>
-                  
+                    <span class="site-state-item-name">标签</span>
+                  </a>
                 </div>
               
             </nav>
@@ -570,6 +453,15 @@
 
           
 
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/HachiJiang" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+            </div>
           
 
           
@@ -587,23 +479,12 @@
       </section>
 
       
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
 
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#学习目的"><span class="nav-number">1.</span> <span class="nav-text">学习目的</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结收获"><span class="nav-number">2.</span> <span class="nav-text">总结收获</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
-
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+        </div>
       
 
     </div>
@@ -630,7 +511,7 @@
 
 
 
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动 v3.7.1</div>
 
 
 
@@ -638,7 +519,7 @@
 
 
 
-  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Pisces</a> v6.3.0</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Pisces</a> v6.3.0</div>
 
 
 
@@ -656,11 +537,6 @@
       </div>
     </footer>
 
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
     
 
     
@@ -809,6 +685,30 @@
 
 
 
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  
+  
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(function (item) {
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'RCvIuzcBS75CqEpVN3m05BcD-gzGzoHsz',
+        appKey: 'dFkYsEx3WSnBdiAVPxsPkRDs',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
 
 
 
