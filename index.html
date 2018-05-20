@@ -432,18 +432,16 @@
 
       
         
-          
-            <p>首先确认当前用户<code>Shell</code>：</p>
+          <p>首先确认当前用户<code>Shell</code>：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> dscl . -<span class="built_in">read</span> /Users/<span class="variable">$USER</span> UserShell <span class="comment"># 或 echo $SHELL</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> UserShell: /bin/zsh</span></span><br></pre></td></tr></table></figure>
 <p>修改当前用户<code>Shell</code>：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo dscl . -create /Users/<span class="variable">$USER</span> UserShell /usr/<span class="built_in">local</span>/bin/zsh</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> Password: *********</span></span><br></pre></td></tr></table></figure></p>
-<p>此时，一些命令无法识别，比如<code>npm</code>等，需要配置环境变量：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">echo</span> <span class="variable">$PATH</span> <span class="comment"># 打印环境变量</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> vi ~/.zshrc <span class="comment"># 加入 export PATH="..."</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">source</span> ~/.zshrc</span></span><br></pre></td></tr></table></figure></p>
-<p>参考：</p>
-<ul>
-<li><a href="https://www.jianshu.com/p/acb1f062a925" target="_blank" rel="noopener">https://www.jianshu.com/p/acb1f062a925</a></li>
-<li><a href="https://rick.cogley.info/post/use-homebrew-zsh-instead-of-the-osx-default/" target="_blank" rel="noopener">https://rick.cogley.info/post/use-homebrew-zsh-instead-of-the-osx-default/</a></li>
-</ul>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/05/19/如何设置zsh为MacOS默认Shell/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -594,82 +592,20 @@
 
       
         
-          
-            <h3 id="研究Nginx之前的准备工作"><a href="#研究Nginx之前的准备工作" class="headerlink" title="研究Nginx之前的准备工作"></a>研究Nginx之前的准备工作</h3><h4 id="Nginx是什么？"><a href="#Nginx是什么？" class="headerlink" title="Nginx是什么？"></a>Nginx是什么？</h4><p>跨平台的Web服务器，竞争对手有<code>Apache</code>、<code>Tomcat</code>、<code>IIS</code>、<code>Jetty</code>。</p>
+          <h3 id="研究Nginx之前的准备工作"><a href="#研究Nginx之前的准备工作" class="headerlink" title="研究Nginx之前的准备工作"></a>研究Nginx之前的准备工作</h3><h4 id="Nginx是什么？"><a href="#Nginx是什么？" class="headerlink" title="Nginx是什么？"></a>Nginx是什么？</h4><p>跨平台的Web服务器，竞争对手有<code>Apache</code>、<code>Tomcat</code>、<code>IIS</code>、<code>Jetty</code>。</p>
 <p>具备Web服务器的基本功能：</p>
 <ul>
 <li>基于<code>REST</code>架构风格；</li>
 <li>以<code>URI</code>或者<code>URL</code>作为沟通依据；</li>
 <li>通过HTTP为浏览器等客户端提供各种网络服务。</li>
 </ul>
-<h4 id="Why-Nginx"><a href="#Why-Nginx" class="headerlink" title="Why Nginx?"></a>Why Nginx?</h4><p>Nginx的特性：</p>
-<ul>
-<li>更快：单次请求能获取更快的响应；并发高峰期更快的响应；可使用当前操作系统特有的高效API来提升性能</li>
-<li>高扩展性：低耦合的优秀设计，丰富的第三方扩展模块。</li>
-<li>高可靠性：核心框架代码的优秀设计，模块设计的简单性，代码质量的稳定性。</li>
-<li>低内存消耗：内存优化。</li>
-<li>单机支持10万以上的并发连接。</li>
-<li>热部署：支持不停机的情况下更新配置等。</li>
-<li>最自由的BSD许可协议。</li>
-</ul>
-<p>Nginx擅长处理高并发，得益于其：</p>
-<ul>
-<li>事件驱动型设计</li>
-<li>全异步的网络I/O处理机制</li>
-<li>极少的进程间切换</li>
-<li>其他许多优化设计</li>
-</ul>
-<h4 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h4><h5 id="Linux环境"><a href="#Linux环境" class="headerlink" title="Linux环境"></a>Linux环境</h5><ol>
-<li><p>Linux 2.6及以上，支持<code>epoll</code>处理高并发；</p>
-</li>
-<li><p>必备软件：</p>
-<p>(1). <code>GCC</code>编译器：用来编译C语言程序</p>
-<p>(2).<code>PCRE</code>库：<code>HTTP</code>模块需要解析正则表达式</p>
-<p>(3). <code>zlib</code>库：用于对<code>HTTP</code>包的内容做<code>gzip</code>格式的压缩，减少网络传输量</p>
-<p>(4). <code>OpenSSL</code>开发库：支持更安全的<code>SSL</code>协议上传输<code>HTTP</code>，包括MD5<code>、</code>SHA1`等散列函数。</p>
-<p>按需使用第三方模块，自由度很高。</p>
-</li>
-<li><p>磁盘目录</p>
-<p>(1). Nginx源码存放目录</p>
-<p>(2). Nginx便一阶段产生的中间文件存放目录</p>
-<p>(3). 部署目录</p>
-<p>(4). 日志文件存放目录</p>
-</li>
-<li><p>Linux内核参数的优化</p>
-<p>默认的Linux内核参数考虑的是最通用的场景，因此需要结合业务特点来调整。</p>
-<p>可调的参数包括并发、处理请求、缓存等。</p>
-</li>
-<li><p>获取<code>Nginx</code>源码：<a href="http://nginx.org/en/download.html" target="_blank" rel="noopener">http://nginx.org/en/download.html</a></p>
-</li>
-<li><p>编译安装<code>Nginx</code>，其中<code>configure</code>的参数可分为四种类型，按需配置：</p>
-<p>(1). 路径相关：<code>Nginx</code>在编译器、运行期与路径相关的参数</p>
-<p>(2). 编译器</p>
-<p>(3). 依赖软件</p>
-<p>(4). 模块，主要分为5类</p>
-<ul>
-<li>事件模型</li>
-<li>默认即编译进入Nginx的HTTP模块</li>
-<li>默认不会编译进入Nginx的HTTP模块</li>
-<li>邮件代理服务器相关的mail模块</li>
-<li>其他参数</li>
-</ul>
-</li>
-<li></li>
-</ol>
-<h5 id="MacOS环境"><a href="#MacOS环境" class="headerlink" title="MacOS环境"></a>MacOS环境</h5><p>直接通过<code>brew install nginx</code>安装。</p>
-<h4 id="configure详解"><a href="#configure详解" class="headerlink" title="configure详解"></a>configure详解</h4><h4 id="Nginx的命令行控制"><a href="#Nginx的命令行控制" class="headerlink" title="Nginx的命令行控制"></a>Nginx的命令行控制</h4><h4 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h4><h3 id="Nginx的配置"><a href="#Nginx的配置" class="headerlink" title="Nginx的配置"></a>Nginx的配置</h3><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><h4 id="积累概念"><a href="#积累概念" class="headerlink" title="积累概念"></a>积累概念</h4><ul>
-<li><code>URI</code>：<code>Uniform Resource Identifier</code>，统一资源描述符</li>
-<li><code>URL</code>：<code>Uniform Resource Locator</code>，统一资源定位符</li>
-<li><code>GCC</code>：<code>GNU Compiler Collection</code>，<code>GNU</code>编译套件</li>
-<li><code>PCRE</code>：<code>Perl Compatible Regular Expressions</code>，<code>Perl</code>兼容正则表达式</li>
-<li><code>gzip</code>：<code>Unix</code>系统的文件压缩方式，通常为<code>.gz</code>后缀的文件</li>
-<li><code>OpenSSL</code>：一个安全套接字层密码库，包括主要的密码算法、常用的密钥和证书封装管理功能及SSL协议</li>
-<li><code>MD5</code>：<code>Message-Digest Algorithm 5</code>，信息摘要算法第5版，把一个任意长度的字节串变换成一定长的十六进制数字串，主要应用于防篡改等安全验证</li>
-<li><code>SHA1</code>：<code>Secure Hash Algorithm</code>，也是一种加密算法，重点理解与<code>MD5</code>的区别</li>
-<li></li>
-</ul>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/05/17/深入理解Nginx-Nginx能帮我们做什么/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -820,8 +756,7 @@
 
       
         
-          
-            <h3 id="学习目的"><a href="#学习目的" class="headerlink" title="学习目的"></a>学习目的</h3><ul>
+          <h3 id="学习目的"><a href="#学习目的" class="headerlink" title="学习目的"></a>学习目的</h3><ul>
 <li>Nginx是什么？解决了哪些问题？</li>
 <li>Nginx是如何解决这些问题的？</li>
 <li>Nginx的架构设计？</li>
@@ -835,8 +770,13 @@
 <li>从Nginx出发，补齐需要的基础知识</li>
 <li>与Node的区别？</li>
 </ul>
-<h3 id="总结收获"><a href="#总结收获" class="headerlink" title="总结收获"></a>总结收获</h3>
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/05/16/深入理解Nginx-学习思路及总结/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>

@@ -108,18 +108,18 @@
 
 
 
-  <meta name="description" content="首先确认当前用户Shell： 12$ dscl . -read /Users/$USER UserShell # 或 echo $SHELL$ UserShell: /bin/zsh 修改当前用户Shell：12$ sudo dscl . -create /Users/$USER UserShell /usr/local/bin/zsh$ Password: ********* 此时，一些命令无法">
+  <meta name="description" content="首先确认当前用户Shell： 12$ dscl . -read /Users/$USER UserShell # 或 echo $SHELL$ UserShell: /bin/zsh 修改当前用户Shell：12$ sudo dscl . -create /Users/$USER UserShell /usr/local/bin/zsh$ Password: *********">
 <meta name="keywords" content="zsh">
 <meta property="og:type" content="article">
 <meta property="og:title" content="如何设置zsh为MacOS默认Shell">
 <meta property="og:url" content="https://hachijiang.github.io/2018/05/19/如何设置zsh为MacOS默认Shell/index.html">
 <meta property="og:site_name" content="Hachi&#39;s Blog">
-<meta property="og:description" content="首先确认当前用户Shell： 12$ dscl . -read /Users/$USER UserShell # 或 echo $SHELL$ UserShell: /bin/zsh 修改当前用户Shell：12$ sudo dscl . -create /Users/$USER UserShell /usr/local/bin/zsh$ Password: ********* 此时，一些命令无法">
+<meta property="og:description" content="首先确认当前用户Shell： 12$ dscl . -read /Users/$USER UserShell # 或 echo $SHELL$ UserShell: /bin/zsh 修改当前用户Shell：12$ sudo dscl . -create /Users/$USER UserShell /usr/local/bin/zsh$ Password: *********">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2018-05-19T10:51:08.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何设置zsh为MacOS默认Shell">
-<meta name="twitter:description" content="首先确认当前用户Shell： 12$ dscl . -read /Users/$USER UserShell # 或 echo $SHELL$ UserShell: /bin/zsh 修改当前用户Shell：12$ sudo dscl . -create /Users/$USER UserShell /usr/local/bin/zsh$ Password: ********* 此时，一些命令无法">
+<meta name="twitter:description" content="首先确认当前用户Shell： 12$ dscl . -read /Users/$USER UserShell # 或 echo $SHELL$ UserShell: /bin/zsh 修改当前用户Shell：12$ sudo dscl . -create /Users/$USER UserShell /usr/local/bin/zsh$ Password: *********">
 
 
 
@@ -444,7 +444,9 @@
         <p>首先确认当前用户<code>Shell</code>：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> dscl . -<span class="built_in">read</span> /Users/<span class="variable">$USER</span> UserShell <span class="comment"># 或 echo $SHELL</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> UserShell: /bin/zsh</span></span><br></pre></td></tr></table></figure>
 <p>修改当前用户<code>Shell</code>：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo dscl . -create /Users/<span class="variable">$USER</span> UserShell /usr/<span class="built_in">local</span>/bin/zsh</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> Password: *********</span></span><br></pre></td></tr></table></figure></p>
-<p>此时，一些命令无法识别，比如<code>npm</code>等，需要配置环境变量：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">echo</span> <span class="variable">$PATH</span> <span class="comment"># 打印环境变量</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> vi ~/.zshrc <span class="comment"># 加入 export PATH="..."</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">source</span> ~/.zshrc</span></span><br></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<p>此时，一些命令无法识别，比如<code>npm</code>等，需要配置环境变量：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">echo</span> <span class="variable">$PATH</span> <span class="comment"># 打印环境变量</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> vi ~/.zshrc <span class="comment"># 加入 export PATH="..."</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">source</span> ~/.zshrc</span></span><br></pre></td></tr></table></figure>
 <p>参考：</p>
 <ul>
 <li><a href="https://www.jianshu.com/p/acb1f062a925" target="_blank" rel="noopener">https://www.jianshu.com/p/acb1f062a925</a></li>
