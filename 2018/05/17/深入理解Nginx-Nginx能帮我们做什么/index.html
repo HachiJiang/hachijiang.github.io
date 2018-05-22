@@ -93,9 +93,9 @@
     tabs: true,
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
+      applicationID: 'R5UE5TAVMG',
+      apiKey: 'd186faa63a2b66782d44e527b2a364be',
+      indexName: 'hachijiang.github.io',
       hits: {"per_page":10},
       labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
     }
@@ -108,18 +108,18 @@
 
 
 
-  <meta name="description" content="研究Nginx之前的准备工作Nginx是什么？跨平台的Web服务器，竞争对手有Apache、Tomcat、IIS、Jetty。 具备Web服务器的基本功能：  基于REST架构风格； 以URI或者URL作为沟通依据； 通过HTTP为浏览器等客户端提供各种网络服务。">
+  <meta name="description" content="学习目标：  如何搭建Nginx运行环境">
 <meta name="keywords" content="Nginx">
 <meta property="og:type" content="article">
 <meta property="og:title" content="深入理解Nginx-Nginx能帮我们做什么？">
 <meta property="og:url" content="https://hachijiang.github.io/2018/05/17/深入理解Nginx-Nginx能帮我们做什么/index.html">
 <meta property="og:site_name" content="Hachi&#39;s Blog">
-<meta property="og:description" content="研究Nginx之前的准备工作Nginx是什么？跨平台的Web服务器，竞争对手有Apache、Tomcat、IIS、Jetty。 具备Web服务器的基本功能：  基于REST架构风格； 以URI或者URL作为沟通依据； 通过HTTP为浏览器等客户端提供各种网络服务。">
+<meta property="og:description" content="学习目标：  如何搭建Nginx运行环境">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2018-05-17T15:27:40.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="深入理解Nginx-Nginx能帮我们做什么？">
-<meta name="twitter:description" content="研究Nginx之前的准备工作Nginx是什么？跨平台的Web服务器，竞争对手有Apache、Tomcat、IIS、Jetty。 具备Web服务器的基本功能：  基于REST架构风格； 以URI或者URL作为沟通依据； 通过HTTP为浏览器等客户端提供各种网络服务。">
+<meta name="twitter:description" content="学习目标：  如何搭建Nginx运行环境">
 
 
 
@@ -266,7 +266,7 @@
       
         <li class="menu-item menu-item-search">
           
-            <a href="javascript:;" class="st-search-show-outputs">
+            <a href="javascript:;" class="popup-trigger">
           
             
               <i class="menu-item-icon fa fa-search fa-fw"></i> <br />搜索</a>
@@ -280,18 +280,26 @@
   
     <div class="site-search">
       
-  <form class="site-search-form">
-  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
-</form>
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
 
-<script type="text/javascript">
-  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
-    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
-    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
-  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
 
-  _st('install', 'rDLpKtTz3DziGh6kd3TU','2.0.0');
-</script>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
 
 
 
@@ -401,6 +409,13 @@
 
                 
                 
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Web开发/nginx/" itemprop="url" rel="index"><span itemprop="name">nginx</span></a></span>
+
+                
+                
               
             </span>
           
@@ -441,14 +456,19 @@
       
 
       
-        <h3 id="研究Nginx之前的准备工作"><a href="#研究Nginx之前的准备工作" class="headerlink" title="研究Nginx之前的准备工作"></a>研究Nginx之前的准备工作</h3><h4 id="Nginx是什么？"><a href="#Nginx是什么？" class="headerlink" title="Nginx是什么？"></a>Nginx是什么？</h4><p>跨平台的Web服务器，竞争对手有<code>Apache</code>、<code>Tomcat</code>、<code>IIS</code>、<code>Jetty</code>。</p>
+        <p>学习目标：</p>
+<ul>
+<li>如何搭建<code>Nginx</code>运行环境</li>
+<li></li>
+</ul>
+<a id="more"></a>
+<h3 id="研究Nginx之前的准备工作"><a href="#研究Nginx之前的准备工作" class="headerlink" title="研究Nginx之前的准备工作"></a>研究Nginx之前的准备工作</h3><h4 id="Nginx是什么？"><a href="#Nginx是什么？" class="headerlink" title="Nginx是什么？"></a>Nginx是什么？</h4><p>跨平台的Web服务器，竞争对手有<code>Apache</code>、<code>Tomcat</code>、<code>IIS</code>、<code>Jetty</code>。</p>
 <p>具备Web服务器的基本功能：</p>
 <ul>
 <li>基于<code>REST</code>架构风格；</li>
 <li>以<code>URI</code>或者<code>URL</code>作为沟通依据；</li>
 <li>通过HTTP为浏览器等客户端提供各种网络服务。</li>
 </ul>
-<a id="more"></a>
 <h4 id="Why-Nginx"><a href="#Why-Nginx" class="headerlink" title="Why Nginx?"></a>Why Nginx?</h4><p>Nginx的特性：</p>
 <ul>
 <li>更快：单次请求能获取更快的响应；并发高峰期更快的响应；可使用当前操作系统特有的高效API来提升性能</li>
@@ -488,7 +508,12 @@
 </li>
 <li><p>获取<code>Nginx</code>源码：<a href="http://nginx.org/en/download.html" target="_blank" rel="noopener">http://nginx.org/en/download.html</a></p>
 </li>
-<li><p>编译安装<code>Nginx</code>，其中<code>configure</code>的参数可分为四种类型，按需配置：</p>
+<li><p>编译安装<code>Nginx</code></p>
+</li>
+<li></li>
+</ol>
+<h5 id="MacOS环境"><a href="#MacOS环境" class="headerlink" title="MacOS环境"></a>MacOS环境</h5><p>直接通过<code>brew install nginx</code>安装。</p>
+<h4 id="configure详解"><a href="#configure详解" class="headerlink" title="configure详解"></a>configure详解</h4><p><code>configure</code>的参数可分为四种类型，按需配置：</p>
 <p>(1). 路径相关：<code>Nginx</code>在编译器、运行期与路径相关的参数</p>
 <p>(2). 编译器</p>
 <p>(3). 依赖软件</p>
@@ -500,11 +525,10 @@
 <li>邮件代理服务器相关的mail模块</li>
 <li>其他参数</li>
 </ul>
-</li>
-<li></li>
-</ol>
-<h5 id="MacOS环境"><a href="#MacOS环境" class="headerlink" title="MacOS环境"></a>MacOS环境</h5><p>直接通过<code>brew install nginx</code>安装。</p>
-<h4 id="configure详解"><a href="#configure详解" class="headerlink" title="configure详解"></a>configure详解</h4><h4 id="Nginx的命令行控制"><a href="#Nginx的命令行控制" class="headerlink" title="Nginx的命令行控制"></a>Nginx的命令行控制</h4><h4 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h4><h3 id="Nginx的配置"><a href="#Nginx的配置" class="headerlink" title="Nginx的配置"></a>Nginx的配置</h3><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><h4 id="积累概念"><a href="#积累概念" class="headerlink" title="积累概念"></a>积累概念</h4><ul>
+<p><code>configure</code>的执行过程中管理依赖及模块依赖顺序，不需要的模块不会编译进<code>Nginx</code>产品，体现了轻量级的概念。</p>
+<h4 id="Nginx的命令行控制"><a href="#Nginx的命令行控制" class="headerlink" title="Nginx的命令行控制"></a>Nginx的命令行控制</h4><p>熟悉常用命令、平滑升级等。</p>
+<h4 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h4><p>了解<code>Nginx</code>的使用场景，将Nginx运行起来。</p>
+<h3 id="Nginx的配置"><a href="#Nginx的配置" class="headerlink" title="Nginx的配置"></a>Nginx的配置</h3><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><h4 id="积累概念"><a href="#积累概念" class="headerlink" title="积累概念"></a>积累概念</h4><ul>
 <li><code>URI</code>：<code>Uniform Resource Identifier</code>，统一资源描述符</li>
 <li><code>URL</code>：<code>Uniform Resource Locator</code>，统一资源定位符</li>
 <li><code>GCC</code>：<code>GNU Compiler Collection</code>，<code>GNU</code>编译套件</li>
@@ -665,7 +689,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-count">4</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -682,7 +706,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">2</span>
+                      
+                    
+                    <span class="site-state-item-count">3</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -699,7 +725,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">2</span>
+                      
+                    
+                    <span class="site-state-item-count">3</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -965,6 +993,19 @@
   
 
 
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=6.3.0"></script>
 
 
 

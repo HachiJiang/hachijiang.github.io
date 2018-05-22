@@ -108,25 +108,25 @@
 
 
 
-  <meta name="description" content="学习目的 Nginx是什么？解决了哪些问题？ Nginx是如何解决这些问题的？ Nginx的架构设计？ Best Practice： 如何用Nginx构建高性能服务器？ 如何充分利用服务器硬件资源？ 如何快速定位、修复Nginx上的问题 如何利用Nginx设计任何基于TCP的、无阻塞的。易于扩展的服务器？   从Nginx出发，补齐需要的基础知识 与Node的区别？">
-<meta name="keywords" content="Nginx">
+  <meta name="description" content="在Gitlab或Github上新建一个项目； 打开终端，cd到本地项目的目录； 本地项目中确保有.gitignore，并配置好； 初始化一个本地仓库，并添加所有文件；  12git initgit add .  把文件提交到本地仓库：  1git commit -m &quot;Initial commit&quot;  添加远程仓库地址：  12git remote add origin ...# 例如：git">
+<meta name="keywords" content="Git">
 <meta property="og:type" content="article">
-<meta property="og:title" content="深入理解Nginx-学习思路及总结">
-<meta property="og:url" content="https://hachijiang.github.io/2018/05/16/深入理解Nginx-学习思路及总结/index.html">
+<meta property="og:title" content="如何给已有本地项目添加git">
+<meta property="og:url" content="https://hachijiang.github.io/2018/05/22/如何给已有本地项目添加git/index.html">
 <meta property="og:site_name" content="Hachi&#39;s Blog">
-<meta property="og:description" content="学习目的 Nginx是什么？解决了哪些问题？ Nginx是如何解决这些问题的？ Nginx的架构设计？ Best Practice： 如何用Nginx构建高性能服务器？ 如何充分利用服务器硬件资源？ 如何快速定位、修复Nginx上的问题 如何利用Nginx设计任何基于TCP的、无阻塞的。易于扩展的服务器？   从Nginx出发，补齐需要的基础知识 与Node的区别？">
+<meta property="og:description" content="在Gitlab或Github上新建一个项目； 打开终端，cd到本地项目的目录； 本地项目中确保有.gitignore，并配置好； 初始化一个本地仓库，并添加所有文件；  12git initgit add .  把文件提交到本地仓库：  1git commit -m &quot;Initial commit&quot;  添加远程仓库地址：  12git remote add origin ...# 例如：git">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-05-16T15:30:10.000Z">
+<meta property="og:updated_time" content="2018-05-22T15:34:25.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="深入理解Nginx-学习思路及总结">
-<meta name="twitter:description" content="学习目的 Nginx是什么？解决了哪些问题？ Nginx是如何解决这些问题的？ Nginx的架构设计？ Best Practice： 如何用Nginx构建高性能服务器？ 如何充分利用服务器硬件资源？ 如何快速定位、修复Nginx上的问题 如何利用Nginx设计任何基于TCP的、无阻塞的。易于扩展的服务器？   从Nginx出发，补齐需要的基础知识 与Node的区别？">
+<meta name="twitter:title" content="如何给已有本地项目添加git">
+<meta name="twitter:description" content="在Gitlab或Github上新建一个项目； 打开终端，cd到本地项目的目录； 本地项目中确保有.gitignore，并配置好； 初始化一个本地仓库，并添加所有文件；  12git initgit add .  把文件提交到本地仓库：  1git commit -m &quot;Initial commit&quot;  添加远程仓库地址：  12git remote add origin ...# 例如：git">
 
 
 
 
 
 
-  <link rel="canonical" href="https://hachijiang.github.io/2018/05/16/深入理解Nginx-学习思路及总结/"/>
+  <link rel="canonical" href="https://hachijiang.github.io/2018/05/22/如何给已有本地项目添加git/"/>
 
 
 
@@ -136,7 +136,7 @@
   };
 </script>
 
-  <title>深入理解Nginx-学习思路及总结 | Hachi's Blog</title>
+  <title>如何给已有本地项目添加git | Hachi's Blog</title>
   
 
 
@@ -345,7 +345,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://hachijiang.github.io/2018/05/16/深入理解Nginx-学习思路及总结/">
+    <link itemprop="mainEntityOfPage" href="https://hachijiang.github.io/2018/05/22/如何给已有本地项目添加git/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="HachiJiang">
@@ -362,7 +362,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">深入理解Nginx-学习思路及总结
+          <h2 class="post-title" itemprop="name headline">如何给已有本地项目添加git
               
             
           </h2>
@@ -387,7 +387,7 @@
                 
               
 
-              <time title="创建时间：2018-05-16 23:30:10" itemprop="dateCreated datePublished" datetime="2018-05-16T23:30:10+08:00">2018-05-16</time>
+              <time title="创建时间：2018-05-22 23:34:25" itemprop="dateCreated datePublished" datetime="2018-05-22T23:34:25+08:00">2018-05-22</time>
             
 
             
@@ -405,14 +405,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Web开发/" itemprop="url" rel="index"><span itemprop="name">Web开发</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Web开发/nginx/" itemprop="url" rel="index"><span itemprop="name">nginx</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/开发工具/" itemprop="url" rel="index"><span itemprop="name">开发工具</span></a></span>
 
                 
                 
@@ -427,8 +420,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/05/16/深入理解Nginx-学习思路及总结/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count gitment-comments-count" data-xid="/2018/05/16/深入理解Nginx-学习思路及总结/" itemprop="commentsCount"></span>
+                <a href="/2018/05/22/如何给已有本地项目添加git/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count gitment-comments-count" data-xid="/2018/05/22/如何给已有本地项目添加git/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -456,22 +449,26 @@
       
 
       
-        <h3 id="学习目的"><a href="#学习目的" class="headerlink" title="学习目的"></a>学习目的</h3><ul>
-<li>Nginx是什么？解决了哪些问题？</li>
-<li>Nginx是如何解决这些问题的？</li>
-<li>Nginx的架构设计？</li>
-<li>Best Practice：<ul>
-<li>如何用Nginx构建高性能服务器？</li>
-<li>如何充分利用服务器硬件资源？</li>
-<li>如何快速定位、修复Nginx上的问题</li>
-<li>如何利用Nginx设计任何基于TCP的、无阻塞的。易于扩展的服务器？</li>
-</ul>
-</li>
-<li>从Nginx出发，补齐需要的基础知识</li>
-<li>与Node的区别？</li>
-</ul>
-<a id="more"></a>
-<h3 id="总结收获"><a href="#总结收获" class="headerlink" title="总结收获"></a>总结收获</h3>
+        <ol>
+<li>在<code>Gitlab</code>或<code>Github</code>上新建一个项目；</li>
+<li>打开终端，<code>cd</code>到本地项目的目录；</li>
+<li>本地项目中确保有<code>.gitignore</code>，并配置好；</li>
+<li>初始化一个本地仓库，并添加所有文件；</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br><span class="line">git add .</span><br></pre></td></tr></table></figure>
+<ol start="5">
+<li>把文件提交到本地仓库：</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m <span class="string">"Initial commit"</span></span><br></pre></td></tr></table></figure>
+<ol start="6">
+<li>添加远程仓库地址：</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin ...</span><br><span class="line"><span class="comment"># 例如：git remote add origin https://git.oschina.net/hhh/GitDemo.git</span></span><br></pre></td></tr></table></figure>
+<ol start="7">
+<li>把文件提交到远程仓库：</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
+
       
     </div>
 
@@ -515,7 +512,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Nginx/" rel="tag"># Nginx</a>
+            <a href="/tags/Git/" rel="tag"># Git</a>
           
         </div>
       
@@ -528,15 +525,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2018/05/19/如何设置zsh为MacOS默认Shell/" rel="next" title="如何设置zsh为MacOS默认Shell">
+                <i class="fa fa-chevron-left"></i> 如何设置zsh为MacOS默认Shell
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/05/17/深入理解Nginx-Nginx能帮我们做什么/" rel="prev" title="深入理解Nginx-Nginx能帮我们做什么？">
-                深入理解Nginx-Nginx能帮我们做什么？ <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -592,17 +589,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -690,22 +678,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#学习目的"><span class="nav-number">1.</span> <span class="nav-text">学习目的</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结收获"><span class="nav-number">2.</span> <span class="nav-text">总结收获</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
