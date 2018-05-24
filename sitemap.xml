@@ -2,6 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://hachijiang.github.io/all-archives/index.html</loc>
+    
+    <lastmod>2018-05-23T15:34:06.723Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://hachijiang.github.io/all-tags/index.html</loc>
+    
+    <lastmod>2018-05-23T15:33:22.999Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://hachijiang.github.io/all-categories/index.html</loc>
+    
+    <lastmod>2018-05-23T15:33:00.483Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://hachijiang.github.io/schedule/index.html</loc>
     
     <lastmod>2018-05-19T14:46:47.755Z</lastmod>

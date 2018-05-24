@@ -14,7 +14,7 @@
   
 
 
-<html class="theme-next pisces use-motion" lang="zh-CN">
+<html class="theme-next mist use-motion" lang="zh-CN">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -84,7 +84,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Pisces',
+    scheme: 'Mist',
     version: '6.3.0',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":false,"onmobile":false},
     fancybox: false,
@@ -108,18 +108,20 @@
 
 
 
-  <meta name="description" content="学习目标：  如何搭建Nginx运行环境">
+  <meta name="description" content="学习目标：  如何搭建Nginx运行环境？ 如何使用Nginx？">
 <meta name="keywords" content="Nginx">
 <meta property="og:type" content="article">
 <meta property="og:title" content="深入理解Nginx-Nginx能帮我们做什么？">
 <meta property="og:url" content="https://hachijiang.github.io/2018/05/17/深入理解Nginx-Nginx能帮我们做什么/index.html">
 <meta property="og:site_name" content="Hachi&#39;s Blog">
-<meta property="og:description" content="学习目标：  如何搭建Nginx运行环境">
+<meta property="og:description" content="学习目标：  如何搭建Nginx运行环境？ 如何使用Nginx？">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://hachijiang.github.io/images/Screen%20Shot%202018-05-24%20at%2023.10.28.png">
 <meta property="og:updated_time" content="2018-05-17T15:27:40.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="深入理解Nginx-Nginx能帮我们做什么？">
-<meta name="twitter:description" content="学习目标：  如何搭建Nginx运行环境">
+<meta name="twitter:description" content="学习目标：  如何搭建Nginx运行环境？ 如何使用Nginx？">
+<meta name="twitter:image" content="https://hachijiang.github.io/images/Screen%20Shot%202018-05-24%20at%2023.10.28.png">
 
 
 
@@ -276,6 +278,9 @@
   
 
   
+    
+
+  
 
   
     <div class="site-search">
@@ -322,9 +327,6 @@
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
-          
-            
-
           
           <div id="content" class="content">
             
@@ -458,8 +460,8 @@
       
         <p>学习目标：</p>
 <ul>
-<li>如何搭建<code>Nginx</code>运行环境</li>
-<li></li>
+<li>如何搭建<code>Nginx</code>运行环境？</li>
+<li>如何使用<code>Nginx</code>？</li>
 </ul>
 <a id="more"></a>
 <h3 id="研究Nginx之前的准备工作"><a href="#研究Nginx之前的准备工作" class="headerlink" title="研究Nginx之前的准备工作"></a>研究Nginx之前的准备工作</h3><h4 id="Nginx是什么？"><a href="#Nginx是什么？" class="headerlink" title="Nginx是什么？"></a>Nginx是什么？</h4><p>跨平台的Web服务器，竞争对手有<code>Apache</code>、<code>Tomcat</code>、<code>IIS</code>、<code>Jetty</code>。</p>
@@ -528,7 +530,14 @@
 <p><code>configure</code>的执行过程中管理依赖及模块依赖顺序，不需要的模块不会编译进<code>Nginx</code>产品，体现了轻量级的概念。</p>
 <h4 id="Nginx的命令行控制"><a href="#Nginx的命令行控制" class="headerlink" title="Nginx的命令行控制"></a>Nginx的命令行控制</h4><p>熟悉常用命令、平滑升级等。</p>
 <h4 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h4><p>了解<code>Nginx</code>的使用场景，将Nginx运行起来。</p>
-<h3 id="Nginx的配置"><a href="#Nginx的配置" class="headerlink" title="Nginx的配置"></a>Nginx的配置</h3><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><h4 id="积累概念"><a href="#积累概念" class="headerlink" title="积累概念"></a>积累概念</h4><ul>
+<h3 id="Nginx的配置"><a href="#Nginx的配置" class="headerlink" title="Nginx的配置"></a>Nginx的配置</h3><ul>
+<li>如何熟练地配置一个静态Web服务器？</li>
+<li>对影响Web服务器性能的各个配置项有深入的理解</li>
+<li>对配置语法有全面的了解</li>
+<li>通过修改<code>nginx.conf</code>来使用第三方模块的功能</li>
+</ul>
+<h4 id="运行中的Nginx进程间的关系"><a href="#运行中的Nginx进程间的关系" class="headerlink" title="运行中的Nginx进程间的关系"></a>运行中的<code>Nginx</code>进程间的关系</h4><p><img src="/images/Screen%20Shot%202018-05-24%20at%2023.10.28.png" alt="Screen Shot 2018-05-24 at 23.10.28"></p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><h4 id="积累概念"><a href="#积累概念" class="headerlink" title="积累概念"></a>积累概念</h4><ul>
 <li><code>URI</code>：<code>Uniform Resource Identifier</code>，统一资源描述符</li>
 <li><code>URL</code>：<code>Uniform Resource Locator</code>，统一资源定位符</li>
 <li><code>GCC</code>：<code>GNU Compiler Collection</code>，<code>GNU</code>编译套件</li>
@@ -689,7 +698,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-count">6</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -708,7 +717,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">3</span>
+                      
+                    
+                    <span class="site-state-item-count">4</span>
                     <span class="site-state-item-name">分类</span>
                   </a>
                 </div>
@@ -727,7 +738,13 @@
                     
                       
                     
-                    <span class="site-state-item-count">3</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">6</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -772,7 +789,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#研究Nginx之前的准备工作"><span class="nav-number">1.</span> <span class="nav-text">研究Nginx之前的准备工作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Nginx是什么？"><span class="nav-number">1.1.</span> <span class="nav-text">Nginx是什么？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Why-Nginx"><span class="nav-number">1.2.</span> <span class="nav-text">Why Nginx?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#准备工作"><span class="nav-number">1.3.</span> <span class="nav-text">准备工作</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Linux环境"><span class="nav-number">1.3.1.</span> <span class="nav-text">Linux环境</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#MacOS环境"><span class="nav-number">1.3.2.</span> <span class="nav-text">MacOS环境</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#configure详解"><span class="nav-number">1.4.</span> <span class="nav-text">configure详解</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Nginx的命令行控制"><span class="nav-number">1.5.</span> <span class="nav-text">Nginx的命令行控制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#小结"><span class="nav-number">1.6.</span> <span class="nav-text">小结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Nginx的配置"><span class="nav-number">2.</span> <span class="nav-text">Nginx的配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#积累概念"><span class="nav-number">3.1.</span> <span class="nav-text">积累概念</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#研究Nginx之前的准备工作"><span class="nav-number">1.</span> <span class="nav-text">研究Nginx之前的准备工作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Nginx是什么？"><span class="nav-number">1.1.</span> <span class="nav-text">Nginx是什么？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Why-Nginx"><span class="nav-number">1.2.</span> <span class="nav-text">Why Nginx?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#准备工作"><span class="nav-number">1.3.</span> <span class="nav-text">准备工作</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Linux环境"><span class="nav-number">1.3.1.</span> <span class="nav-text">Linux环境</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#MacOS环境"><span class="nav-number">1.3.2.</span> <span class="nav-text">MacOS环境</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#configure详解"><span class="nav-number">1.4.</span> <span class="nav-text">configure详解</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Nginx的命令行控制"><span class="nav-number">1.5.</span> <span class="nav-text">Nginx的命令行控制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#小结"><span class="nav-number">1.6.</span> <span class="nav-text">小结</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Nginx的配置"><span class="nav-number">2.</span> <span class="nav-text">Nginx的配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#运行中的Nginx进程间的关系"><span class="nav-number">2.1.</span> <span class="nav-text">运行中的Nginx进程间的关系</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#积累概念"><span class="nav-number">3.1.</span> <span class="nav-text">积累概念</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -821,7 +838,7 @@
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" rel="external nofollow" href="https://github.com/theme-next/hexo-theme-next">NexT.Pisces</a> v6.3.0</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" rel="external nofollow" href="https://github.com/theme-next/hexo-theme-next">NexT.Mist</a> v6.3.0</div>
 
 
 
@@ -905,13 +922,6 @@
 
   
   
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=6.3.0"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.3.0"></script>
-
-
 
   
   <script type="text/javascript" src="/js/src/scrollspy.js?v=6.3.0"></script>
