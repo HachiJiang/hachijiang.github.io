@@ -108,25 +108,25 @@
 
 
 
-  <meta name="description" content="首先确认当前用户Shell： 12$ dscl . -read /Users/$USER UserShell # 或 echo $SHELL$ UserShell: /bin/zsh 修改当前用户Shell：12$ sudo dscl . -create /Users/$USER UserShell /usr/local/bin/zsh$ Password: *********">
-<meta name="keywords" content="zsh">
+  <meta name="description" content="好奇的问题：  vue-i18n如何实现多语言切换？ vue-i18n如何注入vue component，使得组件文案自动刷新？ 基础组件库如何对接vue-i18n？ 拓展： 如何编写vue plugin？    下面一一展开。  使用方式是如何设计的？12345678910111213import Vue from &apos;vue&apos;;import VueI18n from &apos;vue-i18n&apos;;Vue">
+<meta name="keywords" content="Vue,i18n,Vue plugins">
 <meta property="og:type" content="article">
-<meta property="og:title" content="如何设置zsh为MacOS默认Shell">
-<meta property="og:url" content="https://hachijiang.github.io/2018/05/19/如何设置zsh为MacOS默认Shell/index.html">
+<meta property="og:title" content="vue-i18n原理解析">
+<meta property="og:url" content="https://hachijiang.github.io/2018/05/28/vue-i18n原理解析/index.html">
 <meta property="og:site_name" content="Hachi&#39;s Blog">
-<meta property="og:description" content="首先确认当前用户Shell： 12$ dscl . -read /Users/$USER UserShell # 或 echo $SHELL$ UserShell: /bin/zsh 修改当前用户Shell：12$ sudo dscl . -create /Users/$USER UserShell /usr/local/bin/zsh$ Password: *********">
+<meta property="og:description" content="好奇的问题：  vue-i18n如何实现多语言切换？ vue-i18n如何注入vue component，使得组件文案自动刷新？ 基础组件库如何对接vue-i18n？ 拓展： 如何编写vue plugin？    下面一一展开。  使用方式是如何设计的？12345678910111213import Vue from &apos;vue&apos;;import VueI18n from &apos;vue-i18n&apos;;Vue">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-05-19T10:51:08.000Z">
+<meta property="og:updated_time" content="2018-05-28T09:25:44.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="如何设置zsh为MacOS默认Shell">
-<meta name="twitter:description" content="首先确认当前用户Shell： 12$ dscl . -read /Users/$USER UserShell # 或 echo $SHELL$ UserShell: /bin/zsh 修改当前用户Shell：12$ sudo dscl . -create /Users/$USER UserShell /usr/local/bin/zsh$ Password: *********">
+<meta name="twitter:title" content="vue-i18n原理解析">
+<meta name="twitter:description" content="好奇的问题：  vue-i18n如何实现多语言切换？ vue-i18n如何注入vue component，使得组件文案自动刷新？ 基础组件库如何对接vue-i18n？ 拓展： 如何编写vue plugin？    下面一一展开。  使用方式是如何设计的？12345678910111213import Vue from &apos;vue&apos;;import VueI18n from &apos;vue-i18n&apos;;Vue">
 
 
 
 
 
 
-  <link rel="canonical" href="https://hachijiang.github.io/2018/05/19/如何设置zsh为MacOS默认Shell/"/>
+  <link rel="canonical" href="https://hachijiang.github.io/2018/05/28/vue-i18n原理解析/"/>
 
 
 
@@ -136,7 +136,7 @@
   };
 </script>
 
-  <title>如何设置zsh为MacOS默认Shell | Hachi's Blog</title>
+  <title>vue-i18n原理解析 | Hachi's Blog</title>
   
 
 
@@ -345,7 +345,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://hachijiang.github.io/2018/05/19/如何设置zsh为MacOS默认Shell/">
+    <link itemprop="mainEntityOfPage" href="https://hachijiang.github.io/2018/05/28/vue-i18n原理解析/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="HachiJiang">
@@ -362,7 +362,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">如何设置zsh为MacOS默认Shell
+          <h2 class="post-title" itemprop="name headline">vue-i18n原理解析
               
             
           </h2>
@@ -387,7 +387,7 @@
                 
               
 
-              <time title="创建时间：2018-05-19 18:51:08" itemprop="dateCreated datePublished" datetime="2018-05-19T18:51:08+08:00">2018-05-19</time>
+              <time title="创建时间：2018-05-28 17:25:44" itemprop="dateCreated datePublished" datetime="2018-05-28T17:25:44+08:00">2018-05-28</time>
             
 
             
@@ -412,7 +412,7 @@
                   ，
                 
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/学习钻研/工具/" itemprop="url" rel="index"><span itemprop="name">工具</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/学习钻研/Web开发/" itemprop="url" rel="index"><span itemprop="name">Web开发</span></a></span>
 
                 
                 
@@ -427,8 +427,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2018/05/19/如何设置zsh为MacOS默认Shell/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count gitment-comments-count" data-xid="/2018/05/19/如何设置zsh为MacOS默认Shell/" itemprop="commentsCount"></span>
+                <a href="/2018/05/28/vue-i18n原理解析/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count gitment-comments-count" data-xid="/2018/05/28/vue-i18n原理解析/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -456,18 +456,30 @@
       
 
       
-        <p>首先确认当前用户<code>Shell</code>：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> dscl . -<span class="built_in">read</span> /Users/<span class="variable">$USER</span> UserShell <span class="comment"># 或 echo $SHELL</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> UserShell: /bin/zsh</span></span><br></pre></td></tr></table></figure>
-<p>修改当前用户<code>Shell</code>：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> sudo dscl . -create /Users/<span class="variable">$USER</span> UserShell /usr/<span class="built_in">local</span>/bin/zsh</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> Password: *********</span></span><br></pre></td></tr></table></figure></p>
-<a id="more"></a>
-<p>此时，一些命令无法识别，比如<code>npm</code>等，需要配置环境变量：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">echo</span> <span class="variable">$PATH</span> <span class="comment"># 打印环境变量</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> vi ~/.zshrc <span class="comment"># 加入 export PATH="..."</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">source</span> ~/.zshrc</span></span><br></pre></td></tr></table></figure>
-<p>参考：</p>
+        <p>好奇的问题：</p>
 <ul>
-<li><a href="https://www.jianshu.com/p/acb1f062a925" target="_blank" rel="noopener">https://www.jianshu.com/p/acb1f062a925</a></li>
-<li><a href="https://rick.cogley.info/post/use-homebrew-zsh-instead-of-the-osx-default/" target="_blank" rel="noopener">https://rick.cogley.info/post/use-homebrew-zsh-instead-of-the-osx-default/</a></li>
+<li><code>vue-i18n</code>如何实现多语言切换？</li>
+<li><code>vue-i18n</code>如何注入<code>vue component</code>，使得组件文案自动刷新？</li>
+<li>基础组件库如何对接<code>vue-i18n</code>？</li>
+<li>拓展：<ul>
+<li>如何编写<code>vue plugin</code>？</li>
 </ul>
-
+</li>
+</ul>
+<p>下面一一展开。 </p>
+<h3 id="使用方式是如何设计的？"><a href="#使用方式是如何设计的？" class="headerlink" title="使用方式是如何设计的？"></a>使用方式是如何设计的？</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span>;</span><br><span class="line"><span class="keyword">import</span> VueI18n <span class="keyword">from</span> <span class="string">'vue-i18n'</span>;</span><br><span class="line"></span><br><span class="line">Vue.use(VueI18n);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Create VueI18n instance with options</span></span><br><span class="line"><span class="keyword">const</span> i18n = <span class="keyword">new</span> VueI18n(&#123;</span><br><span class="line">  locale: <span class="string">'ja'</span>, <span class="comment">// set locale</span></span><br><span class="line">  messages, <span class="comment">// set locale messages</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Create a Vue instance with `i18n` option;</span></span><br><span class="line"><span class="keyword">new</span> Vue(&#123; i18n &#125;).$mount(<span class="string">'#app'</span>);</span><br></pre></td></tr></table></figure>
+<p>首先，明确<code>vue-i18n</code>是作为<code>vue plugin</code>使用的，因此对外接口需要遵循一定的规范提供（<a href="https://cn.vuejs.org/v2/guide/plugins.html" target="_blank" rel="noopener">文档</a>）：</p>
+<ul>
+<li><code>install(Vue, options)</code></li>
+</ul>
+<p>使用插件时通过全局方法注册：</p>
+<ul>
+<li><code>Vue.use(plugin, options)</code></li>
+</ul>
+<p>目的是？</p>
+<p>其次，创建实例挂载至根组件。</p>
+<p>目的是？</p>
+<h3 id="vue-i18n源码学习"><a href="#vue-i18n源码学习" class="headerlink" title="vue-i18n源码学习"></a><code>vue-i18n</code>源码学习</h3><h4 id="入口文件index-js"><a href="#入口文件index-js" class="headerlink" title="入口文件index.js"></a>入口文件<code>index.js</code></h4>
       
     </div>
 
@@ -512,7 +524,7 @@
     <strong>本文作者： </strong>HachiJiang</li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://hachijiang.github.io/2018/05/19/如何设置zsh为MacOS默认Shell/" title="如何设置zsh为MacOS默认Shell">https://hachijiang.github.io/2018/05/19/如何设置zsh为MacOS默认Shell/</a>
+    <a href="https://hachijiang.github.io/2018/05/28/vue-i18n原理解析/" title="vue-i18n原理解析">https://hachijiang.github.io/2018/05/28/vue-i18n原理解析/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li>
@@ -525,7 +537,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/zsh/" rel="tag"># zsh</a>
+            <a href="/tags/Vue/" rel="tag"># Vue</a>
+          
+            <a href="/tags/i18n/" rel="tag"># i18n</a>
+          
+            <a href="/tags/Vue-plugins/" rel="tag"># Vue plugins</a>
           
         </div>
       
@@ -538,8 +554,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/05/17/深入理解Nginx-Nginx能帮我们做什么/" rel="next" title="深入理解Nginx-Nginx能帮我们做什么？">
-                <i class="fa fa-chevron-left"></i> 深入理解Nginx-Nginx能帮我们做什么？
+              <a href="/2018/05/28/如何在服务器启动定时脚本/" rel="next" title="如何在服务器启动定时脚本">
+                <i class="fa fa-chevron-left"></i> 如何在服务器启动定时脚本
               </a>
             
           </div>
@@ -548,8 +564,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/05/22/如何给已有本地项目添加git/" rel="prev" title="如何给已有本地项目添加git">
-                如何给已有本地项目添加git <i class="fa fa-chevron-right"></i>
+              <a href="/2018/05/28/Visualize-Module-Dependencies-in-JS/" rel="prev" title="Visualize Module Dependencies in JS">
+                Visualize Module Dependencies in JS <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -606,8 +622,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -722,6 +747,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用方式是如何设计的？"><span class="nav-number">1.</span> <span class="nav-text">使用方式是如何设计的？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vue-i18n源码学习"><span class="nav-number">2.</span> <span class="nav-text">vue-i18n源码学习</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#入口文件index-js"><span class="nav-number">2.1.</span> <span class="nav-text">入口文件index.js</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
