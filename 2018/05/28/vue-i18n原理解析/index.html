@@ -108,18 +108,22 @@
 
 
 
-  <meta name="description" content="好奇的问题：  vue-i18n如何实现多语言切换？ vue-i18n如何注入vue component，使得组件文案自动刷新？ 基础组件库如何对接vue-i18n？ 拓展： 如何编写vue plugin？    下面一一展开。  使用方式是如何设计的？12345678910111213import Vue from &apos;vue&apos;;import VueI18n from &apos;vue-i18n&apos;;Vue">
-<meta name="keywords" content="Vue,i18n,Vue plugins">
+  <meta name="description" content="作为使用者，对i18n框架的期望如下：  在组件中通过指定key来获取当前locale的翻译值 locale变化时，自动更新所有翻译结果  下面对照vue-i18n v7.7.0学习其解决这两个问题思路：  拓展：  基础组件库如何对接vue-i18n？ 如何编写vue plugin？">
+<meta name="keywords" content="Vue,i18n,Vue plugins,源码">
 <meta property="og:type" content="article">
-<meta property="og:title" content="vue-i18n原理解析">
+<meta property="og:title" content="vue-i18n深入理解">
 <meta property="og:url" content="https://hachijiang.github.io/2018/05/28/vue-i18n原理解析/index.html">
 <meta property="og:site_name" content="Hachi&#39;s Blog">
-<meta property="og:description" content="好奇的问题：  vue-i18n如何实现多语言切换？ vue-i18n如何注入vue component，使得组件文案自动刷新？ 基础组件库如何对接vue-i18n？ 拓展： 如何编写vue plugin？    下面一一展开。  使用方式是如何设计的？12345678910111213import Vue from &apos;vue&apos;;import VueI18n from &apos;vue-i18n&apos;;Vue">
+<meta property="og:description" content="作为使用者，对i18n框架的期望如下：  在组件中通过指定key来获取当前locale的翻译值 locale变化时，自动更新所有翻译结果  下面对照vue-i18n v7.7.0学习其解决这两个问题思路：  拓展：  基础组件库如何对接vue-i18n？ 如何编写vue plugin？">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://hachijiang.github.io/media/graph-1.png">
+<meta property="og:image" content="https://hachijiang.github.io/media/vue-i18n.png">
+<meta property="og:image" content="https://hachijiang.github.io/media/vue-i18n%20%E8%B0%83%E7%94%A8%E5%85%B3%E7%B3%BB%E6%A2%B3%E7%90%86%20-1-.png">
 <meta property="og:updated_time" content="2018-05-28T09:25:44.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="vue-i18n原理解析">
-<meta name="twitter:description" content="好奇的问题：  vue-i18n如何实现多语言切换？ vue-i18n如何注入vue component，使得组件文案自动刷新？ 基础组件库如何对接vue-i18n？ 拓展： 如何编写vue plugin？    下面一一展开。  使用方式是如何设计的？12345678910111213import Vue from &apos;vue&apos;;import VueI18n from &apos;vue-i18n&apos;;Vue">
+<meta name="twitter:title" content="vue-i18n深入理解">
+<meta name="twitter:description" content="作为使用者，对i18n框架的期望如下：  在组件中通过指定key来获取当前locale的翻译值 locale变化时，自动更新所有翻译结果  下面对照vue-i18n v7.7.0学习其解决这两个问题思路：  拓展：  基础组件库如何对接vue-i18n？ 如何编写vue plugin？">
+<meta name="twitter:image" content="https://hachijiang.github.io/media/graph-1.png">
 
 
 
@@ -136,7 +140,7 @@
   };
 </script>
 
-  <title>vue-i18n原理解析 | Hachi's Blog</title>
+  <title>vue-i18n深入理解 | Hachi's Blog</title>
   
 
 
@@ -362,7 +366,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">vue-i18n原理解析
+          <h2 class="post-title" itemprop="name headline">vue-i18n深入理解
               
             
           </h2>
@@ -456,30 +460,123 @@
       
 
       
-        <p>好奇的问题：</p>
+        <p>作为使用者，对<code>i18n</code>框架的期望如下：</p>
+<ol>
+<li>在组件中通过指定<code>key</code>来获取当前<code>locale</code>的翻译值</li>
+<li><code>locale</code>变化时，自动更新所有翻译结果</li>
+</ol>
+<p>下面对照<code>vue-i18n v7.7.0</code>学习其解决这两个问题思路：</p>
+<blockquote>
+<p>拓展：</p>
 <ul>
-<li><code>vue-i18n</code>如何实现多语言切换？</li>
-<li><code>vue-i18n</code>如何注入<code>vue component</code>，使得组件文案自动刷新？</li>
 <li>基础组件库如何对接<code>vue-i18n</code>？</li>
-<li>拓展：<ul>
-<li>如何编写<code>vue plugin</code>？</li>
+<li>如何编写<code>vue plugin</code>？ </li>
+</ul>
+</blockquote>
+<a id="more"></a>
+<h3 id="vue-i18n如何设计使用方式？"><a href="#vue-i18n如何设计使用方式？" class="headerlink" title="vue-i18n如何设计使用方式？"></a><code>vue-i18n</code>如何设计使用方式？</h3><h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span>;</span><br><span class="line"><span class="keyword">import</span> VueI18n <span class="keyword">from</span> <span class="string">'vue-i18n'</span>;</span><br><span class="line"></span><br><span class="line">Vue.use(VueI18n);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Create VueI18n instance with options</span></span><br><span class="line"><span class="keyword">const</span> i18n = <span class="keyword">new</span> VueI18n(&#123;</span><br><span class="line">  locale: <span class="string">'ja'</span>, <span class="comment">// set locale</span></span><br><span class="line">  messages, <span class="comment">// set locale messages</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Create a Vue instance with `i18n` option;</span></span><br><span class="line"><span class="keyword">new</span> Vue(&#123; i18n &#125;).$mount(<span class="string">'#app'</span>);</span><br></pre></td></tr></table></figure>
+<p><code>vue-i18n</code>与应用程序对接分为两步。</p>
+<p>首先，<code>vue-i18n</code>作为<code>vue plugin</code>使用，因此对外接口需要遵循一定的规范提供（<a href="https://cn.vuejs.org/v2/guide/plugins.html" target="_blank" rel="noopener">文档</a>），通过全局方法 <code>Vue.use(plugin, options)</code>注册。</p>
+<p>其次，创建实例挂载至根组件。</p>
+<h4 id="配置与使用"><a href="#配置与使用" class="headerlink" title="配置与使用"></a>配置与使用</h4><ul>
+<li>配置：<ul>
+<li><code>locale</code>和<code>messages</code>：导入多语言<code>mapping</code></li>
+<li><code>fallbackLocale</code>：备用语言包</li>
+<li><code>component level localization</code></li>
+</ul>
+</li>
+<li>基本方法：<ul>
+<li><code>$t</code>：普通词</li>
+<li><code>$tc</code>：单复数</li>
+<li><code>$te</code>：check 翻译key是否存在</li>
+<li><code>$d</code>：时间日期</li>
+<li><code>$n</code>：货币数字</li>
+</ul>
+</li>
+<li>自定义指令：<code>v-t</code></li>
+<li>高阶：<ul>
+<li>linked locale messages</li>
+<li><code>&lt;i18n&gt;&lt;/i18n&gt;</code>：组件块的拼接与复用</li>
 </ul>
 </li>
 </ul>
-<p>下面一一展开。 </p>
-<h3 id="使用方式是如何设计的？"><a href="#使用方式是如何设计的？" class="headerlink" title="使用方式是如何设计的？"></a>使用方式是如何设计的？</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span>;</span><br><span class="line"><span class="keyword">import</span> VueI18n <span class="keyword">from</span> <span class="string">'vue-i18n'</span>;</span><br><span class="line"></span><br><span class="line">Vue.use(VueI18n);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Create VueI18n instance with options</span></span><br><span class="line"><span class="keyword">const</span> i18n = <span class="keyword">new</span> VueI18n(&#123;</span><br><span class="line">  locale: <span class="string">'ja'</span>, <span class="comment">// set locale</span></span><br><span class="line">  messages, <span class="comment">// set locale messages</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Create a Vue instance with `i18n` option;</span></span><br><span class="line"><span class="keyword">new</span> Vue(&#123; i18n &#125;).$mount(<span class="string">'#app'</span>);</span><br></pre></td></tr></table></figure>
-<p>首先，明确<code>vue-i18n</code>是作为<code>vue plugin</code>使用的，因此对外接口需要遵循一定的规范提供（<a href="https://cn.vuejs.org/v2/guide/plugins.html" target="_blank" rel="noopener">文档</a>）：</p>
+<h3 id="vue-i18n源码模块学习"><a href="#vue-i18n源码模块学习" class="headerlink" title="vue-i18n源码模块学习"></a><code>vue-i18n</code>源码模块学习</h3><h4 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h4><p>项目结构较简单，一共9个文件，依赖图如下：<br><img src="/media/graph-1.png" alt="graph"><br>对外只提供了类<code>VueI18n</code>，还提供了静态方法和属性：</p>
 <ul>
-<li><code>install(Vue, options)</code></li>
+<li><code>install(Vue)</code></li>
+<li><code>version</code></li>
+<li><code>availabilities</code></li>
 </ul>
-<p>使用插件时通过全局方法注册：</p>
+<p> 模块分工如下：<br> <img src="/media/vue-i18n.png" alt="vue-i18n"></p>
+<blockquote>
+<p>疑问：</p>
 <ul>
-<li><code>Vue.use(plugin, options)</code></li>
+<li>为什么有循环引用？<code>index.js</code> -&gt; <code>install.js</code> -&gt; <code>mixin.js</code> -&gt; <code>index.js</code></li>
 </ul>
-<p>目的是？</p>
-<p>其次，创建实例挂载至根组件。</p>
-<p>目的是？</p>
-<h3 id="vue-i18n源码学习"><a href="#vue-i18n源码学习" class="headerlink" title="vue-i18n源码学习"></a><code>vue-i18n</code>源码学习</h3><h4 id="入口文件index-js"><a href="#入口文件index-js" class="headerlink" title="入口文件index.js"></a>入口文件<code>index.js</code></h4>
+</blockquote>
+<h4 id="VueI18n类-实现多语言解析、监控能力"><a href="#VueI18n类-实现多语言解析、监控能力" class="headerlink" title="VueI18n类 - 实现多语言解析、监控能力"></a><code>VueI18n</code>类 - 实现多语言解析、监控能力</h4><h5 id="解析路径-path-js"><a href="#解析路径-path-js" class="headerlink" title="解析路径 - path.js"></a>解析路径 - <code>path.js</code></h5><p>（细节待看）</p>
+<h5 id="解析字符串模板-format-js"><a href="#解析字符串模板-format-js" class="headerlink" title="解析字符串模板 - format.js"></a>解析字符串模板 - <code>format.js</code></h5><p>该模块只提供最基础的<code>interpolate</code>能力（细节待看）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 解析字符串模板</span></span><br><span class="line"><span class="comment"> * @param message: 翻译好的字符串模板</span></span><br><span class="line"><span class="comment"> * @param values:  生成最终字符串的变量参数配置</span></span><br><span class="line"><span class="comment"> * @returns &#123;string&#125;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">interpolate (message: string, <span class="attr">values</span>: any): <span class="built_in">Array</span>&lt;any&gt; &#123;</span><br><span class="line">    <span class="keyword">if</span> (!values) &#123;</span><br><span class="line">        <span class="keyword">return</span> [message]</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">let</span> tokens: <span class="built_in">Array</span>&lt;Token&gt; = <span class="keyword">this</span>._caches[message]</span><br><span class="line">    <span class="keyword">if</span> (!tokens) &#123;</span><br><span class="line">        tokens = parse(message)</span><br><span class="line">        <span class="keyword">this</span>._caches[message] = tokens</span><br><span class="line">    &#125;</span><br><span class="line">	<span class="keyword">return</span> compile(tokens, values)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上层公共API对 formatter 的调用关系梳理如下图所示。<br><img src="/media/vue-i18n%20%E8%B0%83%E7%94%A8%E5%85%B3%E7%B3%BB%E6%A2%B3%E7%90%86%20-1-.png" alt="vue-i18n 调用关系梳理 -1-"></p>
+<h5 id="监控locale等相关数据变化"><a href="#监控locale等相关数据变化" class="headerlink" title="监控locale等相关数据变化"></a>监控<code>locale</code>等相关数据变化</h5><p>三个关键属性：</p>
+<ul>
+<li><p><code>_vm</code>：将所有影响翻译结果的属性放入一个新的<code>Vue实例中，this._vm</code>。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">_initVM (data: &#123;</span><br><span class="line">    locale: Locale,</span><br><span class="line">    fallbackLocale: Locale,</span><br><span class="line">    messages: LocaleMessages,</span><br><span class="line">    dateTimeFormats: DateTimeFormats,</span><br><span class="line">    numberFormats: NumberFormats</span><br><span class="line">&#125;): <span class="keyword">void</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> silent = Vue.config.silent</span><br><span class="line">    Vue.config.silent = <span class="literal">true</span></span><br><span class="line">    <span class="keyword">this</span>._vm = <span class="keyword">new</span> Vue(&#123; data &#125;)</span><br><span class="line">    Vue.config.silent = silent</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在<code>VueI18n</code>中通过<code>set</code>/<code>get</code>添加上述属性，便于直接通过实例读写，且修改相关属性的操作均通过<code>this._vm.$set</code>触发<code>watcher</code>。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">get locale (): Locale &#123; <span class="keyword">return</span> <span class="keyword">this</span>._vm.locale &#125;</span><br><span class="line"></span><br><span class="line">set locale (locale: Locale): <span class="keyword">void</span> &#123;</span><br><span class="line">	<span class="keyword">this</span>._vm.$set(<span class="keyword">this</span>._vm, <span class="string">'locale'</span>, locale)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">setLocaleMessage (locale: Locale, <span class="attr">message</span>: LocaleMessageObject): <span class="keyword">void</span> &#123;</span><br><span class="line">	<span class="keyword">this</span>._vm.$set(<span class="keyword">this</span>._vm.messages, locale, message)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>watchI18nData</code>：根组件监控该数据变化</p>
+</li>
+<li><p><code>_dataListeners</code>：所有子组件缓存至该数组，触发更新时强制刷新 ????</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">watchI18nData (): <span class="built_in">Function</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> self = <span class="keyword">this</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>._vm.$watch(<span class="string">'$data'</span>, () =&gt; &#123;</span><br><span class="line">        <span class="keyword">let</span> i = self._dataListeners.length</span><br><span class="line">        <span class="keyword">while</span> (i--) &#123;</span><br><span class="line">            <span class="comment">// 不太理解，如果每个都不立即执行，则最后执行 callback 时，i 始终是 -1</span></span><br><span class="line">            Vue.nextTick(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">                self._dataListeners[i] &amp;&amp; self._dataListeners[i].$forceUpdate()</span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;, &#123; <span class="attr">deep</span>: <span class="literal">true</span> &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="VueI18n-install-Vue-将能力注入组件树"><a href="#VueI18n-install-Vue-将能力注入组件树" class="headerlink" title="VueI18n.install(Vue) - 将能力注入组件树"></a><code>VueI18n.install(Vue)</code> - 将能力注入组件树</h4><p>核心源码：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Object</span>.defineProperty(Vue.prototype, <span class="string">'$i18n'</span>, &#123;</span><br><span class="line">    get () &#123; <span class="keyword">return</span> <span class="keyword">this</span>._i18n &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">extend(Vue)</span><br><span class="line">Vue.mixin(mixin)</span><br><span class="line">Vue.directive(<span class="string">'t'</span>, &#123; bind, update &#125;)</span><br><span class="line">Vue.component(component.name, component)</span><br><span class="line"></span><br><span class="line"><span class="comment">// use object-based merge strategy</span></span><br><span class="line"><span class="keyword">const</span> strats = Vue.config.optionMergeStrategies</span><br><span class="line">strats.i18n = strats.methods</span><br></pre></td></tr></table></figure></p>
+<h5 id="添加Vue实例属性：-i18n"><a href="#添加Vue实例属性：-i18n" class="headerlink" title="添加Vue实例属性：$i18n"></a>添加<code>Vue</code>实例属性：<code>$i18n</code></h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Object</span>.defineProperty(Vue.prototype, <span class="string">'$i18n'</span>, &#123;</span><br><span class="line">	get () &#123; <span class="keyword">return</span> <span class="keyword">this</span>._i18n &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h5 id="添加Vue实例方法-extend-js"><a href="#添加Vue实例方法-extend-js" class="headerlink" title="添加Vue实例方法 - extend.js"></a>添加<code>Vue</code>实例方法 - <code>extend.js</code></h5><p>将<code>$i18n</code>的翻译方法挂载至组件<code>this</code>，便于调用。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Object</span>.defineProperty(Vue.prototype, <span class="string">'$t'</span>, &#123;</span><br><span class="line">    get () &#123;</span><br><span class="line">        <span class="keyword">return</span> (key: Path, ...values: any): <span class="function"><span class="params">TranslateResult</span> =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">const</span> i18n = <span class="keyword">this</span>.$i18n</span><br><span class="line">            <span class="keyword">return</span> i18n._t(key, i18n.locale, i18n._getMessages(), <span class="keyword">this</span>, ...values)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>同时，通过封装可以指定内置参数作为默认参数。</p>
+<h5 id="混入生命周期-mixin-js"><a href="#混入生命周期-mixin-js" class="headerlink" title="混入生命周期 - mixin.js"></a>混入生命周期 - <code>mixin.js</code></h5><p>针对每个组件的生命周期加入hook：</p>
+<ul>
+<li><code>beforeCreate()</code>：<ul>
+<li>合并组件内部<code>&lt;i18n&gt;</code>所包含的<code>messages</code></li>
+<li>添加<code>watcher</code>监控变化</li>
+<li>处理子组件不存在<code>$i18n</code>对象时，从根组件获取<code>$root.$i18n</code></li>
+<li>兼容多种配置方式</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><code>beforeDestroy()</code>：将添加的属性和<code>watcher</code>清除，避免内存泄漏。</li>
+</ul>
+<h5 id="添加自定义指令-v-t-directive-js"><a href="#添加自定义指令-v-t-directive-js" class="headerlink" title="添加自定义指令 v-t - directive.js"></a>添加自定义指令 <code>v-t</code> - <code>directive.js</code></h5><p>该指令配置了两个钩子函数：</p>
+<ul>
+<li><p><code>bind</code>：获取<code>path</code>并将对应文本赋值给<code>el.textContent。</code></p>
+<p>第一次绑定到元素时，读取配置，可以是<code>string</code>直接指定<code>path</code>，也可以是<code>object</code>指定较为复杂的配置。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">parseValue</span> (<span class="params">value: any</span>): <span class="title">Object</span> </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> path: ?string</span><br><span class="line">  <span class="keyword">let</span> locale: ?Locale</span><br><span class="line">  <span class="keyword">let</span> args: any</span><br><span class="line">  <span class="keyword">let</span> choice: ?number</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> value === <span class="string">'string'</span>) &#123;</span><br><span class="line">    path = value</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (isPlainObject(value)) &#123;</span><br><span class="line">    path = value.path</span><br><span class="line">    locale = value.locale</span><br><span class="line">    args = value.args</span><br><span class="line">    choice = value.choice</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> &#123; path, locale, args, choice &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>因此自定义指令支持的配置方式有：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- string syntax: literal --&gt;</span><br><span class="line">&lt;p v-t=&quot;&apos;foo.bar&apos;&quot;&gt;&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- string syntax: binding via data or computed props --&gt;</span><br><span class="line">&lt;p v-t=&quot;msg&quot;&gt;&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- object syntax: literal --&gt;</span><br><span class="line">&lt;p v-t=&quot;&#123; path: &apos;hi&apos;, locale: &apos;ja&apos;, args: &#123; name: &apos;kazupon&apos; &#125; &#125;&quot;&gt;&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">&lt;!-- object syntax: binding via data or computed props --&gt;</span><br><span class="line">&lt;p v-t=&quot;&#123; path: greeting, args: &#123; name: fullName &#125; &#125;&quot;&gt;&lt;/p&gt;</span><br></pre></td></tr></table></figure>
+<p>赋值过程如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> vm: any = vnode.context</span><br><span class="line"><span class="keyword">if</span> (choice) &#123;</span><br><span class="line">    el._vt = el.textContent = vm.$i18n.tc(path, choice, ...makeParams(locale, args))</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    el._vt = el.textContent = vm.$i18n.t(path, ...makeParams(locale, args))</span><br><span class="line">&#125;</span><br><span class="line">el._locale = vm.$i18n.locale</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>update</code>：所在组件的<code>VNode</code>更新时调用，见<a href="https://cn.vuejs.org/v2/guide/custom-directive.html#%E9%92%A9%E5%AD%90%E5%87%BD%E6%95%B0" target="_blank" rel="noopener">文档</a>。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (!assert(el, vnode)) &#123; <span class="keyword">return</span> &#125;</span><br><span class="line"><span class="comment">// 判断是否 locale 或者 参数 是否发生变化，避免不必要的更新</span></span><br><span class="line"><span class="keyword">if</span> (localeEqual(el, vnode) &amp;&amp; looseEqual(binding.value, binding.oldValue)) &#123; <span class="keyword">return</span> &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 更新 textContent</span></span><br><span class="line">t(el, binding, vnode)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>可见，<code>v-t</code>只在<code>update</code>触发后重新取值更新，且在<code>update</code>中能通过判断避免不必要的更新。</p>
+<h5 id="注册全局组件-lt-i18n-gt-component-js"><a href="#注册全局组件-lt-i18n-gt-component-js" class="headerlink" title="注册全局组件&lt;i18n&gt; - component.js"></a>注册全局组件<code>&lt;i18n&gt;</code> - <code>component.js</code></h5><p>支持以组件为单位的插值（<a href="http://kazupon.github.io/vue-i18n/en/interpolation.html" target="_blank" rel="noopener">文档</a>），避免使用易受<code>XSS</code>攻击的<code>v-html</code>。</p>
+<h5 id="确定自定义选项合并策略"><a href="#确定自定义选项合并策略" class="headerlink" title="确定自定义选项合并策略"></a>确定自定义选项合并策略</h5><p>使用<a href="https://cn.vuejs.org/v2/guide/mixins.html#%E8%87%AA%E5%AE%9A%E4%B9%89%E9%80%89%E9%A1%B9%E5%90%88%E5%B9%B6%E7%AD%96%E7%95%A5" target="_blank" rel="noopener">通用的合并策略</a>。</p>
+<h3 id="关键流程梳理"><a href="#关键流程梳理" class="headerlink" title="关键流程梳理"></a>关键流程梳理</h3><p>每个组件如何能通过<code>this</code>调用，并随着<code>locale</code>变化？</p>
+<h3 id="收获"><a href="#收获" class="headerlink" title="收获"></a>收获</h3><h4 id="可用性"><a href="#可用性" class="headerlink" title="可用性"></a>可用性</h4><h4 id="可扩展性"><a href="#可扩展性" class="headerlink" title="可扩展性"></a>可扩展性</h4><ul>
+<li>模块解耦设计的很好，比如所有的模板解析都由<code>format.js - BaseFormatter</code>完成，对外提供<code>interpoloate()</code>接口，因此当内置<code>formatter</code>不能满足需求但又依赖<code>vue-i18n</code>的控制逻辑时，也可以嵌入自定义<code>formatter</code>。</li>
+</ul>
+<h4 id="性能"><a href="#性能" class="headerlink" title="性能"></a>性能</h4><ul>
+<li>利用缓存避免重复运算：<ul>
+<li><code>I18nPath</code>中缓存解析过的<code>path</code></li>
+</ul>
+</li>
+</ul>
+
       
     </div>
 
@@ -524,7 +621,7 @@
     <strong>本文作者： </strong>HachiJiang</li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://hachijiang.github.io/2018/05/28/vue-i18n原理解析/" title="vue-i18n原理解析">https://hachijiang.github.io/2018/05/28/vue-i18n原理解析/</a>
+    <a href="https://hachijiang.github.io/2018/05/28/vue-i18n原理解析/" title="vue-i18n深入理解">https://hachijiang.github.io/2018/05/28/vue-i18n原理解析/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li>
@@ -542,6 +639,8 @@
             <a href="/tags/i18n/" rel="tag"># i18n</a>
           
             <a href="/tags/Vue-plugins/" rel="tag"># Vue plugins</a>
+          
+            <a href="/tags/源码/" rel="tag"># 源码</a>
           
         </div>
       
@@ -651,7 +750,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">9</span>
+                    <span class="site-state-item-count">10</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -707,7 +806,13 @@
                     
                       
                     
-                    <span class="site-state-item-count">10</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">13</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -757,7 +862,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用方式是如何设计的？"><span class="nav-number">1.</span> <span class="nav-text">使用方式是如何设计的？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vue-i18n源码学习"><span class="nav-number">2.</span> <span class="nav-text">vue-i18n源码学习</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#入口文件index-js"><span class="nav-number">2.1.</span> <span class="nav-text">入口文件index.js</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#vue-i18n如何设计使用方式？"><span class="nav-number">1.</span> <span class="nav-text">vue-i18n如何设计使用方式？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#安装"><span class="nav-number">1.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#配置与使用"><span class="nav-number">1.2.</span> <span class="nav-text">配置与使用</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vue-i18n源码模块学习"><span class="nav-number">2.</span> <span class="nav-text">vue-i18n源码模块学习</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Overview"><span class="nav-number">2.1.</span> <span class="nav-text">Overview</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#VueI18n类-实现多语言解析、监控能力"><span class="nav-number">2.2.</span> <span class="nav-text">VueI18n类 - 实现多语言解析、监控能力</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#解析路径-path-js"><span class="nav-number">2.2.1.</span> <span class="nav-text">解析路径 - path.js</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#解析字符串模板-format-js"><span class="nav-number">2.2.2.</span> <span class="nav-text">解析字符串模板 - format.js</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#监控locale等相关数据变化"><span class="nav-number">2.2.3.</span> <span class="nav-text">监控locale等相关数据变化</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#VueI18n-install-Vue-将能力注入组件树"><span class="nav-number">2.3.</span> <span class="nav-text">VueI18n.install(Vue) - 将能力注入组件树</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#添加Vue实例属性：-i18n"><span class="nav-number">2.3.1.</span> <span class="nav-text">添加Vue实例属性：$i18n</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#添加Vue实例方法-extend-js"><span class="nav-number">2.3.2.</span> <span class="nav-text">添加Vue实例方法 - extend.js</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#混入生命周期-mixin-js"><span class="nav-number">2.3.3.</span> <span class="nav-text">混入生命周期 - mixin.js</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#添加自定义指令-v-t-directive-js"><span class="nav-number">2.3.4.</span> <span class="nav-text">添加自定义指令 v-t - directive.js</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#注册全局组件-lt-i18n-gt-component-js"><span class="nav-number">2.3.5.</span> <span class="nav-text">注册全局组件&lt;i18n&gt; - component.js</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#确定自定义选项合并策略"><span class="nav-number">2.3.6.</span> <span class="nav-text">确定自定义选项合并策略</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关键流程梳理"><span class="nav-number">3.</span> <span class="nav-text">关键流程梳理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#收获"><span class="nav-number">4.</span> <span class="nav-text">收获</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#可用性"><span class="nav-number">4.1.</span> <span class="nav-text">可用性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#可扩展性"><span class="nav-number">4.2.</span> <span class="nav-text">可扩展性</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#性能"><span class="nav-number">4.3.</span> <span class="nav-text">性能</span></a></li></ol></li></ol></div>
             
 
           </div>

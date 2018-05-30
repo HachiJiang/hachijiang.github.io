@@ -108,18 +108,18 @@
 
 
 
-  <meta name="description" content="启动脚本：1$ nohup node app.js &amp;amp; ctrl + c退出后查看脚本进程：1$ ps -ef | grep 启动脚本名称 需手动杀死进程：1$ kill -s 9 进程端口号 参考：  https://www.ibm.com/developerworks/cn/linux/l-cn-nohup/index.html">
+  <meta name="description" content="启动脚本：1$ nohup node app.js &amp;amp; 输出日志可在nohup.out查看。 ctrl + c退出后查看脚本进程： 1$ ps -ef | grep 启动脚本名称 需手动杀死进程：1$ kill -s 9 进程端口号 参考：  https://www.ibm.com/developerworks/cn/linux/l-cn-nohup/index.html">
 <meta name="keywords" content="Shell">
 <meta property="og:type" content="article">
 <meta property="og:title" content="如何在服务器启动定时脚本">
 <meta property="og:url" content="https://hachijiang.github.io/2018/05/28/如何在服务器启动定时脚本/index.html">
 <meta property="og:site_name" content="Hachi&#39;s Blog">
-<meta property="og:description" content="启动脚本：1$ nohup node app.js &amp;amp; ctrl + c退出后查看脚本进程：1$ ps -ef | grep 启动脚本名称 需手动杀死进程：1$ kill -s 9 进程端口号 参考：  https://www.ibm.com/developerworks/cn/linux/l-cn-nohup/index.html">
+<meta property="og:description" content="启动脚本：1$ nohup node app.js &amp;amp; 输出日志可在nohup.out查看。 ctrl + c退出后查看脚本进程： 1$ ps -ef | grep 启动脚本名称 需手动杀死进程：1$ kill -s 9 进程端口号 参考：  https://www.ibm.com/developerworks/cn/linux/l-cn-nohup/index.html">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2018-05-28T09:03:36.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="如何在服务器启动定时脚本">
-<meta name="twitter:description" content="启动脚本：1$ nohup node app.js &amp;amp; ctrl + c退出后查看脚本进程：1$ ps -ef | grep 启动脚本名称 需手动杀死进程：1$ kill -s 9 进程端口号 参考：  https://www.ibm.com/developerworks/cn/linux/l-cn-nohup/index.html">
+<meta name="twitter:description" content="启动脚本：1$ nohup node app.js &amp;amp; 输出日志可在nohup.out查看。 ctrl + c退出后查看脚本进程： 1$ ps -ef | grep 启动脚本名称 需手动杀死进程：1$ kill -s 9 进程端口号 参考：  https://www.ibm.com/developerworks/cn/linux/l-cn-nohup/index.html">
 
 
 
@@ -457,7 +457,9 @@
 
       
         <p>启动脚本：<br><figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ nohup <span class="keyword">node</span> <span class="title">app</span>.js &amp;</span><br></pre></td></tr></table></figure></p>
-<p><code>ctrl + c</code>退出后查看脚本进程：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> ps -ef | grep 启动脚本名称</span></span><br></pre></td></tr></table></figure></p>
+<p>输出日志可在<code>nohup.out</code>查看。</p>
+<p><code>ctrl + c</code>退出后查看脚本进程：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> ps -ef | grep 启动脚本名称</span></span><br></pre></td></tr></table></figure>
 <p>需手动杀死进程：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">kill</span> -s 9 进程端口号</span></span><br></pre></td></tr></table></figure></p>
 <p>参考：</p>
 <ul>
@@ -544,8 +546,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/05/28/vue-i18n原理解析/" rel="prev" title="vue-i18n原理解析">
-                vue-i18n原理解析 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/05/28/vue-i18n原理解析/" rel="prev" title="vue-i18n深入理解">
+                vue-i18n深入理解 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -622,7 +624,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">9</span>
+                    <span class="site-state-item-count">10</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -678,7 +680,13 @@
                     
                       
                     
-                    <span class="site-state-item-count">10</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">13</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
