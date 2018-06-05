@@ -110,7 +110,7 @@
 
 
   <meta name="description" content="作为使用者，对i18n框架的期望如下：  在组件中通过指定key来获取当前locale的翻译值 locale变化时，自动更新所有翻译结果  下面对照vue-i18n v7.7.0学习解决这两个问题的思路：">
-<meta name="keywords" content="Vue,源码,i18n,Vue plugins">
+<meta name="keywords" content="Vue,i18n,Vue plugins,源码">
 <meta property="og:type" content="article">
 <meta property="og:title" content="vue-i18n深入理解">
 <meta property="og:url" content="https://hachijiang.github.io/vue-i18n原理解析/index.html">
@@ -558,9 +558,17 @@
 </li>
 </ul>
 <p>可见，<code>v-t</code>只在<code>update</code>触发后重新取值更新，且在<code>update</code>中能通过判断避免不必要的更新。</p>
+<p><strong>使用<code>v-t</code>遇到的坑：</strong></p>
+<ul>
+<li>问题：在<code>&lt;slot&gt;</code>中的元素使用<code>v-t=&quot;&#39;common.add&#39;&quot;</code>时，切换<code>locale</code>文字未自动更新。</li>
+<li>原因：调试时发现<code>slot</code>内组件被直接复用导致显示文字语言不会随着<code>locale</code>变化。</li>
+<li>解决方案：改为<code>v-t=&quot;{path: &#39;common.add&#39;, locale: this.$i18n.locale}&quot;</code>或<code>$t</code>。深层次原因有待进一步了解<code>vue</code>更新渲染机制。</li>
+</ul>
+<blockquote>
+<p> GitHub上有人反馈类似的问题：<a href="https://github.com/kazupon/vue-i18n/issues/227" target="_blank" rel="noopener">https://github.com/kazupon/vue-i18n/issues/227</a></p>
+</blockquote>
 <h5 id="注册全局组件-lt-i18n-gt-component-js"><a href="#注册全局组件-lt-i18n-gt-component-js" class="headerlink" title="注册全局组件&lt;i18n&gt; - component.js"></a>注册全局组件<code>&lt;i18n&gt;</code> - <code>component.js</code></h5><p>支持以组件为单位的插值（<a href="http://kazupon.github.io/vue-i18n/en/interpolation.html" target="_blank" rel="noopener">文档</a>），避免使用易受<code>XSS</code>攻击的<code>v-html</code>。</p>
 <h5 id="确定自定义选项合并策略"><a href="#确定自定义选项合并策略" class="headerlink" title="确定自定义选项合并策略"></a>确定自定义选项合并策略</h5><p>使用<a href="https://cn.vuejs.org/v2/guide/mixins.html#%E8%87%AA%E5%AE%9A%E4%B9%89%E9%80%89%E9%A1%B9%E5%90%88%E5%B9%B6%E7%AD%96%E7%95%A5" target="_blank" rel="noopener">通用的合并策略</a>。</p>
-<h3 id="关键流程梳理"><a href="#关键流程梳理" class="headerlink" title="关键流程梳理"></a>关键流程梳理</h3><p>每个组件如何能通过<code>this</code>调用，并随着<code>locale</code>变化？</p>
 <h3 id="收获"><a href="#收获" class="headerlink" title="收获"></a>收获</h3><ul>
 <li>可用性</li>
 <li>可扩展性<ul>
@@ -636,11 +644,11 @@
           
             <a href="/tags/Vue/" rel="tag"># Vue</a>
           
-            <a href="/tags/源码/" rel="tag"># 源码</a>
-          
             <a href="/tags/i18n/" rel="tag"># i18n</a>
           
             <a href="/tags/Vue-plugins/" rel="tag"># Vue plugins</a>
+          
+            <a href="/tags/源码/" rel="tag"># 源码</a>
           
         </div>
       
@@ -866,7 +874,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#vue-i18n如何设计使用方式？"><span class="nav-number">1.</span> <span class="nav-text">vue-i18n如何设计使用方式？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#安装"><span class="nav-number">1.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#配置与使用"><span class="nav-number">1.2.</span> <span class="nav-text">配置与使用</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vue-i18n源码模块学习"><span class="nav-number">2.</span> <span class="nav-text">vue-i18n源码模块学习</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Overview"><span class="nav-number">2.1.</span> <span class="nav-text">Overview</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#VueI18n类-实现多语言解析、监控能力"><span class="nav-number">2.2.</span> <span class="nav-text">VueI18n类 - 实现多语言解析、监控能力</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#解析路径-path-js"><span class="nav-number">2.2.1.</span> <span class="nav-text">解析路径 - path.js</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#解析字符串模板-format-js"><span class="nav-number">2.2.2.</span> <span class="nav-text">解析字符串模板 - format.js</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#监控locale等相关数据变化"><span class="nav-number">2.2.3.</span> <span class="nav-text">监控locale等相关数据变化</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#VueI18n-install-Vue-将能力注入组件树"><span class="nav-number">2.3.</span> <span class="nav-text">VueI18n.install(Vue) - 将能力注入组件树</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#添加Vue实例属性：-i18n"><span class="nav-number">2.3.1.</span> <span class="nav-text">添加Vue实例属性：$i18n</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#添加Vue实例方法-extend-js"><span class="nav-number">2.3.2.</span> <span class="nav-text">添加Vue实例方法 - extend.js</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#混入生命周期-mixin-js"><span class="nav-number">2.3.3.</span> <span class="nav-text">混入生命周期 - mixin.js</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#添加自定义指令-v-t-directive-js"><span class="nav-number">2.3.4.</span> <span class="nav-text">添加自定义指令 v-t - directive.js</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#注册全局组件-lt-i18n-gt-component-js"><span class="nav-number">2.3.5.</span> <span class="nav-text">注册全局组件&lt;i18n&gt; - component.js</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#确定自定义选项合并策略"><span class="nav-number">2.3.6.</span> <span class="nav-text">确定自定义选项合并策略</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关键流程梳理"><span class="nav-number">3.</span> <span class="nav-text">关键流程梳理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#收获"><span class="nav-number">4.</span> <span class="nav-text">收获</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#vue-i18n如何设计使用方式？"><span class="nav-number">1.</span> <span class="nav-text">vue-i18n如何设计使用方式？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#安装"><span class="nav-number">1.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#配置与使用"><span class="nav-number">1.2.</span> <span class="nav-text">配置与使用</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vue-i18n源码模块学习"><span class="nav-number">2.</span> <span class="nav-text">vue-i18n源码模块学习</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Overview"><span class="nav-number">2.1.</span> <span class="nav-text">Overview</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#VueI18n类-实现多语言解析、监控能力"><span class="nav-number">2.2.</span> <span class="nav-text">VueI18n类 - 实现多语言解析、监控能力</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#解析路径-path-js"><span class="nav-number">2.2.1.</span> <span class="nav-text">解析路径 - path.js</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#解析字符串模板-format-js"><span class="nav-number">2.2.2.</span> <span class="nav-text">解析字符串模板 - format.js</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#监控locale等相关数据变化"><span class="nav-number">2.2.3.</span> <span class="nav-text">监控locale等相关数据变化</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#VueI18n-install-Vue-将能力注入组件树"><span class="nav-number">2.3.</span> <span class="nav-text">VueI18n.install(Vue) - 将能力注入组件树</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#添加Vue实例属性：-i18n"><span class="nav-number">2.3.1.</span> <span class="nav-text">添加Vue实例属性：$i18n</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#添加Vue实例方法-extend-js"><span class="nav-number">2.3.2.</span> <span class="nav-text">添加Vue实例方法 - extend.js</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#混入生命周期-mixin-js"><span class="nav-number">2.3.3.</span> <span class="nav-text">混入生命周期 - mixin.js</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#添加自定义指令-v-t-directive-js"><span class="nav-number">2.3.4.</span> <span class="nav-text">添加自定义指令 v-t - directive.js</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#注册全局组件-lt-i18n-gt-component-js"><span class="nav-number">2.3.5.</span> <span class="nav-text">注册全局组件&lt;i18n&gt; - component.js</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#确定自定义选项合并策略"><span class="nav-number">2.3.6.</span> <span class="nav-text">确定自定义选项合并策略</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#收获"><span class="nav-number">3.</span> <span class="nav-text">收获</span></a></li></ol></div>
             
 
           </div>
