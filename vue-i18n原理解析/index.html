@@ -14,7 +14,7 @@
   
 
 
-<html class="theme-next mist use-motion" lang="zh-CN">
+<html class="theme-next gemini use-motion" lang="zh-CN">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -85,7 +85,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Mist',
+    scheme: 'Gemini',
     version: '6.3.0',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":false,"onmobile":false},
     fancybox: false,
@@ -112,7 +112,7 @@
   <meta name="description" content="作为使用者，对i18n框架的期望如下：  在组件中通过指定key来获取当前locale的翻译值 locale变化时，自动更新所有翻译结果  下面对照vue-i18n v7.7.0学习解决这两个问题的思路：">
 <meta name="keywords" content="Vue,源码,i18n,Vue plugins">
 <meta property="og:type" content="article">
-<meta property="og:title" content="vue-i18n深入理解">
+<meta property="og:title" content="vue-i18n原理解析">
 <meta property="og:url" content="https://hachijiang.github.io/vue-i18n原理解析/index.html">
 <meta property="og:site_name" content="Hachi&#39;s Blog">
 <meta property="og:description" content="作为使用者，对i18n框架的期望如下：  在组件中通过指定key来获取当前locale的翻译值 locale变化时，自动更新所有翻译结果  下面对照vue-i18n v7.7.0学习解决这两个问题的思路：">
@@ -122,7 +122,7 @@
 <meta property="og:image" content="https://hachijiang.github.io/media/vue-i18n%20%E8%B0%83%E7%94%A8%E5%85%B3%E7%B3%BB%E6%A2%B3%E7%90%86%20-1-.png">
 <meta property="og:updated_time" content="2018-05-28T09:25:44.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="vue-i18n深入理解">
+<meta name="twitter:title" content="vue-i18n原理解析">
 <meta name="twitter:description" content="作为使用者，对i18n框架的期望如下：  在组件中通过指定key来获取当前locale的翻译值 locale变化时，自动更新所有翻译结果  下面对照vue-i18n v7.7.0学习解决这两个问题的思路：">
 <meta name="twitter:image" content="https://hachijiang.github.io/media/graph-1.png">
 
@@ -141,7 +141,7 @@
   };
 </script>
 
-  <title>vue-i18n深入理解 | Hachi's Blog</title>
+  <title>vue-i18n原理解析 | Hachi's Blog</title>
   
 
 
@@ -281,9 +281,6 @@
   
 
   
-    
-
-  
 
   
     <div class="site-search">
@@ -331,6 +328,9 @@
       <div class="main-inner">
         <div class="content-wrap">
           
+            
+
+          
           <div id="content" class="content">
             
 
@@ -367,7 +367,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">vue-i18n深入理解
+          <h2 class="post-title" itemprop="name headline">vue-i18n原理解析
               
             
           </h2>
@@ -441,7 +441,26 @@
 
           
           
+             <span id="/vue-i18n原理解析/" class="leancloud_visitors" data-flag-title="vue-i18n原理解析">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
 
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon"
+            >
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
           
 
           
@@ -557,7 +576,7 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (!assert(el, vnode)) &#123; <span class="keyword">return</span> &#125;</span><br><span class="line"><span class="comment">// 判断是否 locale 或者 参数 是否发生变化，避免不必要的更新</span></span><br><span class="line"><span class="keyword">if</span> (localeEqual(el, vnode) &amp;&amp; looseEqual(binding.value, binding.oldValue)) &#123; <span class="keyword">return</span> &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 更新 textContent</span></span><br><span class="line">t(el, binding, vnode)</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<p>可见，<code>v-t</code>只在<code>update</code>触发后重新取值更新，且在<code>update</code>中能通过判断避免不必要的更新。</p>
+<p>可见，<code>v-t</code>只在<code>update</code>触发后重新取值更新，且在<code>update</code>中能借助组件的缓存来避免不必要的更新。</p>
 <p><strong>使用<code>v-t</code>遇到的坑：</strong></p>
 <ul>
 <li>问题：在<code>&lt;slot&gt;</code>中的元素使用<code>v-t=&quot;&#39;common.add&#39;&quot;</code>时，切换<code>locale</code>文字未自动更新。</li>
@@ -629,7 +648,7 @@
     <strong>本文作者： </strong>HachiJiang</li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://hachijiang.github.io/vue-i18n原理解析/" title="vue-i18n深入理解">https://hachijiang.github.io/vue-i18n原理解析/</a>
+    <a href="https://hachijiang.github.io/vue-i18n原理解析/" title="vue-i18n原理解析">https://hachijiang.github.io/vue-i18n原理解析/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li>
@@ -758,7 +777,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">12</span>
+                    <span class="site-state-item-count">14</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -824,7 +843,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">15</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">17</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -923,12 +946,30 @@
 
 
 
-  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" rel="external nofollow" href="https://github.com/theme-next/hexo-theme-next">NexT.Mist</a> v6.3.0</div>
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" rel="external nofollow" href="https://github.com/theme-next/hexo-theme-next">NexT.Gemini</a> v6.3.0</div>
 
 
 
 
         
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv" title="总访客量">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="site-pv" title="总访问量">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
 
 
 
@@ -1007,6 +1048,13 @@
 
   
   
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.3.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.3.0"></script>
+
+
 
   
   <script type="text/javascript" src="/js/src/scrollspy.js?v=6.3.0"></script>
@@ -1105,6 +1153,102 @@
 
 
   
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("hwsNa9f6Yi9ltLJe6J2FFI0N-gzGzoHsz", "hhG8Wy4sqzvmgXtK2T7IGSXu");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            
+            counter.save(null, {
+              success: function(counter) {
+                
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(counter.get('time'));
+                
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            
+              var $element = $(document.getElementById(url));
+              $element.find('.leancloud-visitors-count').text('Counter not initialized! See more at console err msg.');
+              console.error('ATTENTION! LeanCloud counter has security bug, see here how to solve it: https://github.com/theme-next/hexo-leancloud-counter-security. \n But you also can use LeanCloud without security, by set \'security\' option to \'false\'.');
+            
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
 
   
 
