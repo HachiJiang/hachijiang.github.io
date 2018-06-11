@@ -109,62 +109,34 @@
 
 
 
-  <meta name="description" content="在Gitlab或Github上新建一个项目；
-打开终端，cd到本地项目的目录；
-本地项目中确保有.gitignore，并配置好；
-初始化一个本地仓库，并添加所有文件；
+  <meta name="description" content="学习目的：
 
-12git initgit add .
-
-把文件提交到本地仓库：
-
-1git commit -m &quot;Initial commit&quot;
-
-添加远程仓库地址：
-
-12git remote add origin ...# 例如：git">
+基础组件库如何实现i18n，以根据locale变化自动更新语言？
+如何让自定义插件支持i18n">
 <meta property="og:type" content="article">
-<meta property="og:title" content="如何给已有本地项目添加git">
-<meta property="og:url" content="https://hachijiang.github.io/如何给已有本地项目添加git/index.html">
+<meta property="og:title" content="Vue组件库i18n方案">
+<meta property="og:url" content="https://hachijiang.github.io/Vue组件库i18n方案/index.html">
 <meta property="og:site_name" content="Hachi's Blog">
-<meta property="og:description" content="在Gitlab或Github上新建一个项目；
-打开终端，cd到本地项目的目录；
-本地项目中确保有.gitignore，并配置好；
-初始化一个本地仓库，并添加所有文件；
+<meta property="og:description" content="学习目的：
 
-12git initgit add .
-
-把文件提交到本地仓库：
-
-1git commit -m &quot;Initial commit&quot;
-
-添加远程仓库地址：
-
-12git remote add origin ...# 例如：git">
-<meta property="og:updated_time" content="2018-05-22T15:34:25.000Z">
+基础组件库如何实现i18n，以根据locale变化自动更新语言？
+如何让自定义插件支持i18n">
+<meta property="og:image" content="https://hachijiang.github.io/media/ElementUI-i18n-lang-UML-1.png">
+<meta property="og:updated_time" content="2018-06-09T13:35:09.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="如何给已有本地项目添加git">
-<meta name="twitter:description" content="在Gitlab或Github上新建一个项目；
-打开终端，cd到本地项目的目录；
-本地项目中确保有.gitignore，并配置好；
-初始化一个本地仓库，并添加所有文件；
+<meta name="twitter:title" content="Vue组件库i18n方案">
+<meta name="twitter:description" content="学习目的：
 
-12git initgit add .
-
-把文件提交到本地仓库：
-
-1git commit -m &quot;Initial commit&quot;
-
-添加远程仓库地址：
-
-12git remote add origin ...# 例如：git">
+基础组件库如何实现i18n，以根据locale变化自动更新语言？
+如何让自定义插件支持i18n">
+<meta name="twitter:image" content="https://hachijiang.github.io/media/ElementUI-i18n-lang-UML-1.png">
 
 
 
 
 
 
-  <link rel="canonical" href="https://hachijiang.github.io/如何给已有本地项目添加git/"/>
+  <link rel="canonical" href="https://hachijiang.github.io/Vue组件库i18n方案/"/>
 
 
 
@@ -174,7 +146,7 @@
   };
 </script>
 
-  <title>如何给已有本地项目添加git | Hachi's Blog</title>
+  <title>Vue组件库i18n方案 | Hachi's Blog</title>
   
 
 
@@ -383,7 +355,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://hachijiang.github.io/如何给已有本地项目添加git/">
+    <link itemprop="mainEntityOfPage" href="https://hachijiang.github.io/Vue组件库i18n方案/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="HachiJiang">
@@ -400,7 +372,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">如何给已有本地项目添加git
+          <h2 class="post-title" itemprop="name headline">Vue组件库i18n方案
               
             
           </h2>
@@ -425,7 +397,7 @@
                 
               
 
-              <time title="创建时间：2018-05-22 23:34:25" itemprop="dateCreated datePublished" datetime="2018-05-22T23:34:25+08:00">2018-05-22</time>
+              <time title="创建时间：2018-06-09 21:35:09" itemprop="dateCreated datePublished" datetime="2018-06-09T21:35:09+08:00">2018-06-09</time>
             
 
             
@@ -443,14 +415,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/学习钻研/" itemprop="url" rel="index"><span itemprop="name">学习钻研</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/学习钻研/工具/" itemprop="url" rel="index"><span itemprop="name">工具</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/学习钻研-Web开发/" itemprop="url" rel="index"><span itemprop="name">学习钻研,Web开发</span></a></span>
 
                 
                 
@@ -465,8 +430,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/如何给已有本地项目添加git/#comments" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count gitment-comments-count" data-xid="/如何给已有本地项目添加git/" itemprop="commentsCount"></span>
+                <a href="/Vue组件库i18n方案/#comments" itemprop="discussionUrl">
+                  <span class="post-meta-item-text">评论数：</span> <span class="post-comments-count gitment-comments-count" data-xid="/Vue组件库i18n方案/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -474,7 +439,7 @@
 
           
           
-             <span id="/如何给已有本地项目添加git/" class="leancloud_visitors" data-flag-title="如何给已有本地项目添加git">
+             <span id="/Vue组件库i18n方案/" class="leancloud_visitors" data-flag-title="Vue组件库i18n方案">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -505,25 +470,33 @@
       
 
       
-        <ol>
-<li>在<code>Gitlab</code>或<code>Github</code>上新建一个项目；</li>
-<li>打开终端，<code>cd</code>到本地项目的目录；</li>
-<li>本地项目中确保有<code>.gitignore</code>，并配置好；</li>
-<li>初始化一个本地仓库，并添加所有文件；</li>
+        <blockquote>
+<p>学习目的：</p>
+<ul>
+<li>基础组件库如何实现<code>i18n</code>，以根据locale变化自动更新语言？</li>
+<li>如何让自定义插件支持<code>i18n</code></li>
+</ul>
+</blockquote>
+<a id="more"></a>
+<h2 id="开源组件库i18n的使用方式"><a href="#开源组件库i18n的使用方式" class="headerlink" title="开源组件库i18n的使用方式"></a>开源组件库i18n的使用方式</h2><p>以<a href="https://ant.design/docs/react/i18n-cn" target="_blank" rel="external">ElementUI</a>和<a href="https://www.iviewui.com/docs/guide/i18n" target="_blank" rel="external">iView</a>为例，二者都支持了：</p>
+<ol>
+<li>设置语言</li>
+<li>兼容<code>vue-i18n</code></li>
+<li>内置多种国家的语言包，并支持开源贡献</li>
 </ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br><span class="line">git add .</span><br></pre></td></tr></table></figure>
-<ol start="5">
-<li>把文件提交到本地仓库：</li>
+<p>接下来以<code>ElementUI v2.4.1</code>为例讨论 1、2是如何实现的。</p>
+<h2 id="模块实现"><a href="#模块实现" class="headerlink" title="模块实现"></a>模块实现</h2><p><img src="/media/ElementUI-i18n-lang-UML-1.png" alt="ElementUI-i18n-lang-UM"></p>
+<p>组件通过<code>mixins</code>导入<code>t</code>方法。</p>
+<h3 id="format模块：提供默认解析方法"><a href="#format模块：提供默认解析方法" class="headerlink" title="format模块：提供默认解析方法"></a><code>format</code>模块：提供默认解析方法</h3><p>实现了简单的变量插值。</p>
+<h3 id="locale-use-lang-：切换语言包"><a href="#locale-use-lang-：切换语言包" class="headerlink" title="locale.use(lang)：切换语言包"></a><code>locale.use(lang)</code>：切换语言包</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> defaultLang <span class="keyword">from</span> <span class="string">'element-ui/src/locale/lang/zh-CN'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> lang = defaultLang;</span><br><span class="line">...</span><br><span class="line">export <span class="keyword">const</span> use = <span class="function"><span class="keyword">function</span>(<span class="params">l</span>) </span>&#123;</span><br><span class="line">  lang = l || lang;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="locale-t-path-options-：获取翻译词"><a href="#locale-t-path-options-：获取翻译词" class="headerlink" title="locale.t(path, options)：获取翻译词"></a><code>locale.t(path, options)</code>：获取翻译词</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> t = <span class="function"><span class="keyword">function</span>(<span class="params">path, options</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 优先使用外部配置的 handler</span></span><br><span class="line">  <span class="keyword">let</span> value = i18nHandler.apply(<span class="keyword">this</span>, <span class="built_in">arguments</span>);</span><br><span class="line">  <span class="keyword">if</span> (value !== <span class="literal">null</span> &amp;&amp; value !== <span class="literal">undefined</span>) <span class="keyword">return</span> value;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> array = path.split(<span class="string">'.'</span>);</span><br><span class="line">  <span class="keyword">let</span> current = lang;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>, j = array.length; i &lt; j; i++) &#123;</span><br><span class="line">    <span class="keyword">const</span> property = array[i];</span><br><span class="line">    value = current[property];</span><br><span class="line">    <span class="comment">// 使用内置默认的解析 handler</span></span><br><span class="line">    <span class="keyword">if</span> (i === j - <span class="number">1</span>) <span class="keyword">return</span> format(value, options);</span><br><span class="line">    <span class="keyword">if</span> (!value) <span class="keyword">return</span> <span class="string">''</span>;</span><br><span class="line">    current = value;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="string">''</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="locale-i18n-fn-：自定义t的实现"><a href="#locale-i18n-fn-：自定义t的实现" class="headerlink" title="locale.i18n(fn)：自定义t的实现"></a><code>locale.i18n(fn)</code>：自定义<code>t</code>的实现</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> merged = <span class="literal">false</span>;</span><br><span class="line"><span class="keyword">let</span> i18nHandler = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> vuei18n = <span class="built_in">Object</span>.getPrototypeOf(<span class="keyword">this</span> || Vue).$t;</span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> vuei18n === <span class="string">'function'</span> &amp;&amp; !!Vue.locale) &#123;</span><br><span class="line">    <span class="keyword">if</span> (!merged) &#123;</span><br><span class="line">      merged = <span class="literal">true</span>;</span><br><span class="line">      Vue.locale(</span><br><span class="line">        Vue.config.lang,</span><br><span class="line">        deepmerge(lang, Vue.locale(Vue.config.lang) || &#123;&#125;, &#123; <span class="attr">clone</span>: <span class="literal">true</span> &#125;)</span><br><span class="line">      );</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> vuei18n.apply(<span class="keyword">this</span>, <span class="built_in">arguments</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> i18n = <span class="function"><span class="keyword">function</span>(<span class="params">fn</span>) </span>&#123;</span><br><span class="line">  i18nHandler = fn || i18nHandler;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="如何兼容vue-i18n"><a href="#如何兼容vue-i18n" class="headerlink" title="如何兼容vue-i18n"></a>如何兼容<code>vue-i18n</code></h2><p>先看接入方式：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></span><br><span class="line"><span class="keyword">import</span> VueI18n <span class="keyword">from</span> <span class="string">'vue-i18n'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> enLocale <span class="keyword">from</span> <span class="string">'element-ui/lib/locale/lang/en'</span></span><br><span class="line"><span class="keyword">import</span> zhLocale <span class="keyword">from</span> <span class="string">'element-ui/lib/locale/lang/zh-CN'</span></span><br><span class="line"><span class="keyword">import</span> ElementLocale <span class="keyword">from</span> <span class="string">'element-ui/lib/locale'</span></span><br><span class="line"></span><br><span class="line">Vue.use(VueI18n)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> messages = &#123;</span><br><span class="line">  <span class="attr">en</span>: &#123;</span><br><span class="line">    <span class="attr">message</span>: <span class="string">'hello'</span>,</span><br><span class="line">    ...enLocale</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">zh</span>: &#123;</span><br><span class="line">    <span class="attr">message</span>: <span class="string">'你好'</span>,</span><br><span class="line">    ...zhLocale</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// Create VueI18n instance with options</span></span><br><span class="line"><span class="keyword">const</span> i18n = <span class="keyword">new</span> VueI18n(&#123;</span><br><span class="line">  <span class="attr">locale</span>: <span class="string">'en'</span>, <span class="comment">// set locale</span></span><br><span class="line">  messages, <span class="comment">// set locale messages</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// 配置获取翻译词的方法</span></span><br><span class="line">ElementLocale.i18n(<span class="function">(<span class="params">key, value</span>) =&gt;</span> i18n.t(key, value))</span><br></pre></td></tr></table></figure>
+<h2 id="自定义插件如何支持i18n"><a href="#自定义插件如何支持i18n" class="headerlink" title="自定义插件如何支持i18n"></a>自定义插件如何支持<code>i18n</code></h2><ol>
+<li>插件内部必须通过方法来获取翻译结果，而不是直接<code>lang.en.translation...</code>；</li>
+<li>该方法是可配置的。（是否必要？）</li>
 </ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m <span class="string">"Initial commit"</span></span><br></pre></td></tr></table></figure>
-<ol start="6">
-<li>添加远程仓库地址：</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin ...</span><br><span class="line"><span class="comment"># 例如：git remote add origin https://git.oschina.net/hhh/GitDemo.git</span></span><br></pre></td></tr></table></figure>
-<ol start="7">
-<li>把文件提交到远程仓库：</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -569,7 +542,7 @@
     <strong>本文作者： </strong>HachiJiang</li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://hachijiang.github.io/如何给已有本地项目添加git/" title="如何给已有本地项目添加git">https://hachijiang.github.io/如何给已有本地项目添加git/</a>
+    <a href="https://hachijiang.github.io/Vue组件库i18n方案/" title="Vue组件库i18n方案">https://hachijiang.github.io/Vue组件库i18n方案/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！</li>
@@ -582,7 +555,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Git/" rel="tag"># Git</a>
+            <a href="/tags/Vue/" rel="tag"># Vue</a>
+          
+            <a href="/tags/源码/" rel="tag"># 源码</a>
+          
+            <a href="/tags/i18n/" rel="tag"># i18n</a>
           
         </div>
       
@@ -595,8 +572,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/如何设置zsh为MacOS默认Shell/" rel="next" title="如何设置zsh为MacOS默认Shell">
-                <i class="fa fa-chevron-left"></i> 如何设置zsh为MacOS默认Shell
+              <a href="/webpack-dev-server使用积累/" rel="next" title="webpack-dev-server使用积累">
+                <i class="fa fa-chevron-left"></i> webpack-dev-server使用积累
               </a>
             
           </div>
@@ -604,10 +581,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/折腾Hexo/" rel="prev" title="折腾Hexo">
-                折腾Hexo <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -663,8 +636,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -795,6 +777,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#开源组件库i18n的使用方式"><span class="nav-number">1.</span> <span class="nav-text">开源组件库i18n的使用方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模块实现"><span class="nav-number">2.</span> <span class="nav-text">模块实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#format模块：提供默认解析方法"><span class="nav-number">2.1.</span> <span class="nav-text">format模块：提供默认解析方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#locale-use-lang-：切换语言包"><span class="nav-number">2.2.</span> <span class="nav-text">locale.use(lang)：切换语言包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#locale-t-path-options-：获取翻译词"><span class="nav-number">2.3.</span> <span class="nav-text">locale.t(path, options)：获取翻译词</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#locale-i18n-fn-：自定义t的实现"><span class="nav-number">2.4.</span> <span class="nav-text">locale.i18n(fn)：自定义t的实现</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何兼容vue-i18n"><span class="nav-number">3.</span> <span class="nav-text">如何兼容vue-i18n</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#自定义插件如何支持i18n"><span class="nav-number">4.</span> <span class="nav-text">自定义插件如何支持i18n</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

@@ -4,11 +4,11 @@
 
     
   <url>
-    <loc>https://hachijiang.github.io/%E7%BB%84%E4%BB%B6%E5%BA%93i18n%E6%96%B9%E6%A1%88/</loc>
+    <loc>https://hachijiang.github.io/Vue%E7%BB%84%E4%BB%B6%E5%BA%93i18n%E6%96%B9%E6%A1%88/</loc>
     <lastmod>2018-06-09T13:35:09.000Z</lastmod>
     <data>
         <display>
-        <title>组件库i18n方案</title>
+        <title>Vue组件库i18n方案</title>
         <pubTime>2018-06-09T13:35:09.000Z</pubTime>
         
         <tag>Vue</tag>
@@ -20,10 +20,7 @@
          
            
              
-              <breadCrumb title="学习钻研" url="https://hachijiang.github.io/categories/%E5%AD%A6%E4%B9%A0%E9%92%BB%E7%A0%94/"/>
-          
-             
-              <breadCrumb title="Web开发" url="https://hachijiang.github.io/categories/%E5%AD%A6%E4%B9%A0%E9%92%BB%E7%A0%94/Web%E5%BC%80%E5%8F%91/"/>
+              <breadCrumb title="学习钻研,Web开发" url="https://hachijiang.github.io/categories/%E5%AD%A6%E4%B9%A0%E9%92%BB%E7%A0%94-Web%E5%BC%80%E5%8F%91/"/>
           
         </display>
     </data>
@@ -174,10 +171,7 @@
          
            
              
-              <breadCrumb title="学习钻研" url="https://hachijiang.github.io/categories/%E5%AD%A6%E4%B9%A0%E9%92%BB%E7%A0%94/"/>
-          
-             
-              <breadCrumb title="Web开发" url="https://hachijiang.github.io/categories/%E5%AD%A6%E4%B9%A0%E9%92%BB%E7%A0%94/Web%E5%BC%80%E5%8F%91/"/>
+              <breadCrumb title="学习钻研,Web开发" url="https://hachijiang.github.io/categories/%E5%AD%A6%E4%B9%A0%E9%92%BB%E7%A0%94-Web%E5%BC%80%E5%8F%91/"/>
           
         </display>
     </data>
