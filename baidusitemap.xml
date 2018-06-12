@@ -13,9 +13,9 @@
         
         <tag>Vue</tag>
          
-        <tag>源码</tag>
-         
         <tag>i18n</tag>
+         
+        <tag>源码</tag>
          
          
            
@@ -42,10 +42,7 @@
          
            
              
-              <breadCrumb title="学习钻研" url="https://hachijiang.github.io/categories/%E5%AD%A6%E4%B9%A0%E9%92%BB%E7%A0%94/"/>
-          
-             
-              <breadCrumb title="工具" url="https://hachijiang.github.io/categories/%E5%AD%A6%E4%B9%A0%E9%92%BB%E7%A0%94/%E5%B7%A5%E5%85%B7/"/>
+              <breadCrumb title="学习钻研,工具" url="https://hachijiang.github.io/categories/%E5%AD%A6%E4%B9%A0%E9%92%BB%E7%A0%94-%E5%B7%A5%E5%85%B7/"/>
           
         </display>
     </data>
@@ -65,10 +62,7 @@
          
            
              
-              <breadCrumb title="学习钻研" url="https://hachijiang.github.io/categories/%E5%AD%A6%E4%B9%A0%E9%92%BB%E7%A0%94/"/>
-          
-             
-              <breadCrumb title="工具" url="https://hachijiang.github.io/categories/%E5%AD%A6%E4%B9%A0%E9%92%BB%E7%A0%94/%E5%B7%A5%E5%85%B7/"/>
+              <breadCrumb title="学习钻研,工具" url="https://hachijiang.github.io/categories/%E5%AD%A6%E4%B9%A0%E9%92%BB%E7%A0%94-%E5%B7%A5%E5%85%B7/"/>
           
         </display>
     </data>
@@ -90,10 +84,7 @@
          
            
              
-              <breadCrumb title="学习钻研" url="https://hachijiang.github.io/categories/%E5%AD%A6%E4%B9%A0%E9%92%BB%E7%A0%94/"/>
-          
-             
-              <breadCrumb title="Web开发" url="https://hachijiang.github.io/categories/%E5%AD%A6%E4%B9%A0%E9%92%BB%E7%A0%94/Web%E5%BC%80%E5%8F%91/"/>
+              <breadCrumb title="学习钻研,Web开发" url="https://hachijiang.github.io/categories/%E5%AD%A6%E4%B9%A0%E9%92%BB%E7%A0%94-Web%E5%BC%80%E5%8F%91/"/>
           
         </display>
     </data>
@@ -110,17 +101,14 @@
         
         <tag>Vue</tag>
          
-        <tag>Vue directive</tag>
-         
         <tag>源码</tag>
+         
+        <tag>Vue directive</tag>
          
          
            
              
-              <breadCrumb title="学习钻研" url="https://hachijiang.github.io/categories/%E5%AD%A6%E4%B9%A0%E9%92%BB%E7%A0%94/"/>
-          
-             
-              <breadCrumb title="Web开发" url="https://hachijiang.github.io/categories/%E5%AD%A6%E4%B9%A0%E9%92%BB%E7%A0%94/Web%E5%BC%80%E5%8F%91/"/>
+              <breadCrumb title="学习钻研,Web开发" url="https://hachijiang.github.io/categories/%E5%AD%A6%E4%B9%A0%E9%92%BB%E7%A0%94-Web%E5%BC%80%E5%8F%91/"/>
           
         </display>
     </data>
@@ -142,10 +130,7 @@
          
            
              
-              <breadCrumb title="学习钻研" url="https://hachijiang.github.io/categories/%E5%AD%A6%E4%B9%A0%E9%92%BB%E7%A0%94/"/>
-          
-             
-              <breadCrumb title="工具" url="https://hachijiang.github.io/categories/%E5%AD%A6%E4%B9%A0%E9%92%BB%E7%A0%94/%E5%B7%A5%E5%85%B7/"/>
+              <breadCrumb title="学习钻研,工具" url="https://hachijiang.github.io/categories/%E5%AD%A6%E4%B9%A0%E9%92%BB%E7%A0%94-%E5%B7%A5%E5%85%B7/"/>
           
         </display>
     </data>
@@ -162,9 +147,9 @@
         
         <tag>Vue</tag>
          
-        <tag>源码</tag>
-         
         <tag>i18n</tag>
+         
+        <tag>源码</tag>
          
         <tag>Vue plugins</tag>
          
@@ -191,10 +176,7 @@
          
            
              
-              <breadCrumb title="学习钻研" url="https://hachijiang.github.io/categories/%E5%AD%A6%E4%B9%A0%E9%92%BB%E7%A0%94/"/>
-          
-             
-              <breadCrumb title="工具" url="https://hachijiang.github.io/categories/%E5%AD%A6%E4%B9%A0%E9%92%BB%E7%A0%94/%E5%B7%A5%E5%85%B7/"/>
+              <breadCrumb title="学习钻研,工具" url="https://hachijiang.github.io/categories/%E5%AD%A6%E4%B9%A0%E9%92%BB%E7%A0%94-%E5%B7%A5%E5%85%B7/"/>
           
         </display>
     </data>
@@ -214,10 +196,7 @@
          
            
              
-              <breadCrumb title="思考沉淀" url="https://hachijiang.github.io/categories/%E6%80%9D%E8%80%83%E6%B2%89%E6%B7%80/"/>
-          
-             
-              <breadCrumb title="团队建设" url="https://hachijiang.github.io/categories/%E6%80%9D%E8%80%83%E6%B2%89%E6%B7%80/%E5%9B%A2%E9%98%9F%E5%BB%BA%E8%AE%BE/"/>
+              <breadCrumb title="思考沉淀,团队建设" url="https://hachijiang.github.io/categories/%E6%80%9D%E8%80%83%E6%B2%89%E6%B7%80-%E5%9B%A2%E9%98%9F%E5%BB%BA%E8%AE%BE/"/>
           
         </display>
     </data>
@@ -240,10 +219,7 @@
          
            
              
-              <breadCrumb title="学习钻研" url="https://hachijiang.github.io/categories/%E5%AD%A6%E4%B9%A0%E9%92%BB%E7%A0%94/"/>
-          
-             
-              <breadCrumb title="工具" url="https://hachijiang.github.io/categories/%E5%AD%A6%E4%B9%A0%E9%92%BB%E7%A0%94/%E5%B7%A5%E5%85%B7/"/>
+              <breadCrumb title="学习钻研,工具" url="https://hachijiang.github.io/categories/%E5%AD%A6%E4%B9%A0%E9%92%BB%E7%A0%94-%E5%B7%A5%E5%85%B7/"/>
           
         </display>
     </data>
@@ -263,10 +239,7 @@
          
            
              
-              <breadCrumb title="学习钻研" url="https://hachijiang.github.io/categories/%E5%AD%A6%E4%B9%A0%E9%92%BB%E7%A0%94/"/>
-          
-             
-              <breadCrumb title="工具" url="https://hachijiang.github.io/categories/%E5%AD%A6%E4%B9%A0%E9%92%BB%E7%A0%94/%E5%B7%A5%E5%85%B7/"/>
+              <breadCrumb title="学习钻研,工具" url="https://hachijiang.github.io/categories/%E5%AD%A6%E4%B9%A0%E9%92%BB%E7%A0%94-%E5%B7%A5%E5%85%B7/"/>
           
         </display>
     </data>
@@ -287,10 +260,7 @@
          
            
              
-              <breadCrumb title="学习钻研" url="https://hachijiang.github.io/categories/%E5%AD%A6%E4%B9%A0%E9%92%BB%E7%A0%94/"/>
-          
-             
-              <breadCrumb title="工具" url="https://hachijiang.github.io/categories/%E5%AD%A6%E4%B9%A0%E9%92%BB%E7%A0%94/%E5%B7%A5%E5%85%B7/"/>
+              <breadCrumb title="学习钻研,工具" url="https://hachijiang.github.io/categories/%E5%AD%A6%E4%B9%A0%E9%92%BB%E7%A0%94-%E5%B7%A5%E5%85%B7/"/>
           
         </display>
     </data>
@@ -312,10 +282,7 @@
          
            
              
-              <breadCrumb title="学习钻研" url="https://hachijiang.github.io/categories/%E5%AD%A6%E4%B9%A0%E9%92%BB%E7%A0%94/"/>
-          
-             
-              <breadCrumb title="Web开发" url="https://hachijiang.github.io/categories/%E5%AD%A6%E4%B9%A0%E9%92%BB%E7%A0%94/Web%E5%BC%80%E5%8F%91/"/>
+              <breadCrumb title="学习钻研,Web开发" url="https://hachijiang.github.io/categories/%E5%AD%A6%E4%B9%A0%E9%92%BB%E7%A0%94-Web%E5%BC%80%E5%8F%91/"/>
           
         </display>
     </data>
@@ -335,10 +302,7 @@
          
            
              
-              <breadCrumb title="学习钻研" url="https://hachijiang.github.io/categories/%E5%AD%A6%E4%B9%A0%E9%92%BB%E7%A0%94/"/>
-          
-             
-              <breadCrumb title="Web开发" url="https://hachijiang.github.io/categories/%E5%AD%A6%E4%B9%A0%E9%92%BB%E7%A0%94/Web%E5%BC%80%E5%8F%91/"/>
+              <breadCrumb title="学习钻研,Web开发" url="https://hachijiang.github.io/categories/%E5%AD%A6%E4%B9%A0%E9%92%BB%E7%A0%94-Web%E5%BC%80%E5%8F%91/"/>
           
         </display>
     </data>
